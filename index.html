@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dish Dictionary</title>
+  <meta name="description" content="Authentic recipes from every corner of the world, with smart filters, a fridge matcher, step-by-step cook mode, timers and a cooking school for beginners.">
+  <meta name="theme-color" content="#d9481f">
+  <script>
+    // The install manifest only works when served over http(s); skip it when opened directly from disk.
+    if (/^https?:$/.test(location.protocol)) { var m = document.createElement('link'); m.rel = 'manifest'; m.href = 'manifest.webmanifest'; document.head.appendChild(m); }
+  </script>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Dishes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try { var p = JSON.parse(localStorage.getItem('dd:prefs') || '{}'); if (p.theme && p.theme !== 'auto') document.documentElement.setAttribute('data-theme', p.theme); } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="Dish Dictionary home">
+      <span class="brand-logo" aria-hidden="true">🍲</span>
+      <span class="brand-name">Dish<b>Dictionary</b></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#/explore" data-nav="explore">Explore</a>
+      <a href="#/pantry" data-nav="pantry">What can I cook?</a>
+      <a href="#/learn" data-nav="learn">Cooking school</a>
+      <a href="#/planner" data-nav="planner">Planner</a>
+      <a href="#/shopping" data-nav="shopping">Shopping <span class="badge" data-shop-count></span></a>
+      <a href="#/me" data-nav="me">My kitchen</a>
+    </nav>
+    <div class="top-actions">
+      <button class="veg-toggle" data-act="toggle-veg" data-veg-btn role="switch" aria-checked="false" title="Show only pure vegetarian dishes">
+        <span class="vmark veg" aria-hidden="true"></span><span class="vt-label">Veg</span><span class="vt-track" aria-hidden="true"><i></i></span>
+      </button>
+      <button class="search-trigger" data-act="palette" aria-label="Search everything">
+        <span aria-hidden="true">🔍</span><span class="st-text">Search</span><kbd>/</kbd>
+      </button>
+      <button class="icon-btn" data-act="toggle-units" data-units-label title="Switch metric / US units">g</button>
+      <button class="icon-btn" data-act="toggle-theme" title="Switch light / dark theme" aria-label="Switch theme">◐</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"><div id="app" aria-live="polite"></div></main>
+
+  <nav class="tabbar" aria-label="Main mobile">
+    <a href="#/" data-nav="home"><span>🏠</span>Home</a>
+    <a href="#/explore" data-nav="explore"><span>🧭</span>Explore</a>
+    <a href="#/pantry" data-nav="pantry"><span>🥕</span>Fridge</a>
+    <a href="#/learn" data-nav="learn"><span>🎓</span>Learn</a>
+    <a href="#/me" data-nav="me"><span>👩‍🍳</span>Me<i class="badge" data-shop-count></i></a>
+  </nav>
+
+  <div id="timerDock" class="timer-dock" aria-live="polite"></div>
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:2rem">Dish Dictionary needs JavaScript enabled.</p></noscript>
+
+  <script src="js/core.js"></script>
+  <script src="js/data/east-asia.js"></script>
+  <script src="js/data/southeast-asia.js"></script>
+  <script src="js/data/south-asia.js"></script>
+  <script src="js/data/middle-east-africa.js"></script>
+  <script src="js/data/europe.js"></script>
+  <script src="js/data/americas-oceania.js"></script>
+  <script src="js/data/india-north.js"></script>
+  <script src="js/data/india-south-street.js"></script>
+  <script src="js/data/india-indochinese-sweets.js"></script>
+  <script src="js/data/india-more.js"></script>
+  <script src="js/data/world-more-asia-italy.js"></script>
+  <script src="js/data/world-more-west.js"></script>
+  <script src="js/data/veg-india-more.js"></script>
+  <script src="js/data/veg-world.js"></script>
+  <script src="js/data/courses-soups-starters-sides.js"></script>
+  <script src="js/data/courses-desserts-drinks.js"></script>
+  <script src="js/data/continental.js"></script>
+  <script src="js/data/photos.js"></script>
+  <script src="js/learn-data.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/learn.js"></script>
+  <script src="js/mine.js"></script>
+  <script src="js/cook.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
