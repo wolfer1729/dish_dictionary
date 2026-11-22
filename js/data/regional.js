@@ -731,13 +731,100 @@
     ['India', 'Nankhatai: ghee and cardamom shortbread baked in Surat.'],
   ]);
   F('stuffed-flatbreads', 'Stuffed flatbreads', ['aloo-paratha', 'paneer-paratha', 'sattu-paratha', 'bolani', 'khachapuri', 'roti-canai', 'pupusas', 'martabak-manis'], [
-    ['Turkey', 'Gözleme: thin dough filled with spinach and cheese, cooked on a griddle.'],
-    ['Lebanon', 'Manakish: flatbread with za’atar and olive oil.'],
+    ['Uzbekistan', 'Katlama: flaky layered flatbread rolled with onion and butter.'],
+    ['Yemen', 'Mutabbaq: paper-thin dough folded around egg, leek and spices.'],
   ]);
   F('plantains', 'Plantains', ['kelewele', 'red-red', 'pazham-pori', 'kerala-banana-chips'], [
-    ['Puerto Rico', 'Mofongo: mashed fried green plantain with garlic.'],
-    ['Colombia', 'Patacones: twice-fried flattened green plantain.'],
+    ['Cuba', 'Maduros: sweet ripe plantains fried until caramelised.'],
+    ['Nigeria', 'Dodo: fried ripe plantain served with stew and beans.'],
   ]);
+
+  /* ---------------- batch 5 ---------------- */
+  F('fried-breads', 'Puffed & fried breads', ['bedmi-puri', 'chole-bhature', 'luchi-alur-dom', 'langos', 'kachori', 'sel-roti', 'puff-puff', 'mandazi', 'sopaipillas'], [
+    ['Navajo Nation (USA)', 'Frybread: quick dough stretched and fried, topped sweet or savoury.'],
+    ['Bengal', 'Radhaballavi: puris stuffed with spiced urad dal.'],
+  ]);
+  F('porridge', 'Porridges & breakfast bowls', ['congee', 'bircher-muesli', 'acai-bowl', 'champorado', 'ragi-ambali', 'ven-pongal', 'mamaliga'], [
+    ['Scotland', 'Porridge: oats simmered with water and salt, eaten with cream.'],
+    ['Japan', 'Okayu: soft rice porridge with umeboshi, for the sick and for New Year.'],
+    ['Ghana', 'Hausa koko: spiced, fermented millet porridge with koose.'],
+  ]);
+  F('potato-cakes', 'Potato cakes & pancakes', ['llapingachos', 'placki-ziemniaczane', 'bubble-and-squeak', 'rosti', 'aloo-tikki-chaat'], [
+    ['Jewish (Ashkenazi)', 'Latkes: grated potato pancakes fried for Hanukkah.'],
+    ['Ireland', 'Boxty: pancakes of grated and mashed potato.'],
+    ['Sweden', 'Raggmunk: thin potato pancakes with lingonberries.'],
+  ]);
+  F('peda-mithai', 'Peda & regional mithai', ['mathura-peda', 'dharwad-peda', 'petha', 'thekua', 'athirasam'], [
+    ['Gujarat', 'Thabdi: grainy, caramel-brown milk fudge.'],
+    ['Bengal', 'Sandesh: soft fresh-chhena sweet pressed in moulds.'],
+  ]);
+  ADD('yogurt-curry', ['nadru-yakhni', 'kalan', 'sol-kadhi']);
+  ADD('tea', ['kahwa']);
+  ADD('greens', ['haak-saag', 'bai', 'gomen', 'matapa']);
+  ADD('breads', ['amritsari-kulcha', 'bedmi-puri', 'thalipeeth']);
+  ADD('stuffed-flatbreads', ['amritsari-kulcha', 'gozleme', 'manakish']);
+  ADD('potato', ['bedmi-puri']);
+  ADD('veg-kebabs', ['rajma-galouti']);
+  ADD('rajma', ['rajma-galouti', 'rice-and-peas']);
+  ADD('milk-sweets', ['mathura-peda', 'basundi', 'dharwad-peda']);
+  ADD('gourds', ['petha']);
+  ADD('fried-dough-sweets', ['thekua', 'athirasam', 'luqaimat', 'chebakia']);
+  ADD('festive-snacks', ['athirasam', 'thekua']);
+  ADD('fritters', ['mirchi-vada', 'mirchi-bajji']);
+  ADD('steamed-cakes', ['methi-muthia', 'kozhukattai']);
+  ADD('gram-flour', ['methi-muthia', 'mirchi-vada', 'mirchi-bajji']);
+  ADD('rice-cakes', ['kozhukattai', 'tangyuan']);
+  ADD('goan', ['bebinca', 'sol-kadhi']);
+  ADD('coolers', ['sol-kadhi', 'chicha-morada']);
+  ADD('mixed-veg', ['mochar-ghonto', 'bai', 'khar']);
+  ADD('dal', ['dhokar-dalna']);
+  ADD('rolls', ['kolkata-egg-roll', 'rolex', 'sabich']);
+  ADD('eggs', ['kolkata-egg-roll', 'rolex', 'kaya-toast']);
+  ADD('relish-curries', ['inji-puli']);
+  ADD('chutney', ['inji-puli', 'avakaya']);
+  ADD('millets', ['thalipeeth']);
+  ADD('himalayan', ['ema-datshi', 'tingmo']);
+  ADD('cheese-melts', ['ema-datshi', 'cauliflower-cheese', 'mamaliga']);
+  ADD('samosa', ['pumpkin-samsa']);
+  ADD('savoury-pies', ['pumpkin-samsa']);
+  ADD('mezze', ['kisir', 'espinacas-garbanzos', 'lablabi']);
+  ADD('salads-more', ['kisir', 'panzanella']);
+  ADD('chopped-salad', ['panzanella']);
+  ADD('bakery-breads', ['simit', 'manakish', 'soda-bread', 'conchas', 'tingmo']);
+  ADD('kheer', ['sutlac', 'sholeh-zard']);
+  ADD('eggplant-med', ['sabich']);
+  ADD('veg-soups', ['ash-reshteh', 'pasta-e-fagioli', 'soupe-au-pistou', 'lablabi']);
+  ADD('bean-stews', ['ash-reshteh', 'pasta-e-fagioli', 'molletes']);
+  ADD('syrup-pastries', ['basbousa', 'chebakia']);
+  ADD('risotto', ['arancini']);
+  ADD('antipasti', ['arancini']);
+  ADD('pasta', ['pasta-e-fagioli']);
+  ADD('fruit-pies', ['clafoutis', 'peach-cobbler']);
+  ADD('custards', ['clafoutis', 'crema-catalana', 'douhua', 'bebinca']);
+  ADD('cookies', ['madeleines', 'scones', 'alfajores']);
+  ADD('french-pastry', ['madeleines']);
+  ADD('tomato-soup', ['salmorejo']);
+  ADD('tapas', ['salmorejo', 'espinacas-garbanzos']);
+  ADD('british', ['cauliflower-cheese', 'scones', 'soda-bread', 'bubble-and-squeak']);
+  ADD('potatoes-europe', ['bubble-and-squeak', 'placki-ziemniaczane']);
+  ADD('pancakes', ['syrniki', 'placki-ziemniaczane', 'kaiserschmarrn', 'canjeero']);
+  ADD('corn-breads', ['mamaliga', 'esquites']);
+  ADD('mexico-tortilla', ['enmoladas', 'molletes', 'esquites']);
+  ADD('plantains', ['mofongo', 'patacones', 'moqueca-banana']);
+  ADD('jollof', ['rice-and-peas']);
+  ADD('peru', ['chicha-morada']);
+  ADD('batter-fried', ['buffalo-cauliflower', 'tempeh-mendoan']);
+  ADD('noodles', ['zaru-soba', 'kongguksu', 'khao-soi']);
+  ADD('kimchi-stews', ['kongguksu']);
+  ADD('dumplings', ['tangyuan']);
+  ADD('tofu', ['buddhas-delight', 'douhua', 'pad-kra-pao-tofu', 'tempeh-mendoan', 'tofu-amok']);
+  ADD('asian-curry', ['khao-soi', 'jackfruit-rendang', 'tofu-amok']);
+  ADD('thai-soups', ['khao-soi']);
+  ADD('bowls', ['pad-kra-pao-tofu']);
+  ADD('frozen', ['che-ba-mau', 'halo-halo']);
+  ADD('ethiopian', ['gomen', 'canjeero']);
+  ADD('peanut-stew', ['matapa']);
+  ADD('tagine-couscous', ['thiakry']);
 
   /* ---------------- index ---------------- */
   DD.familyOf = {};
