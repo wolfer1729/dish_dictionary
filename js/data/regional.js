@@ -661,6 +661,84 @@
     ['Gujarat', 'Tindora nu shaak: ivy gourd stir-fry with besan.'],
   ]);
 
+  /* ---------------- batch 4 ---------------- */
+  ADD('dal', ['dalma', 'dal-bhat', 'sai-bhaji', 'veg-dhansak', 'dal-dhokli']);
+  ADD('milk-sweets', ['chhena-poda', 'malaiyyo']);
+  ADD('variety-rice', ['pakhala-bhata']);
+  ADD('potato', ['aloo-pitika', 'aloo-ke-gutke']);
+  ADD('chopped-salad', ['singju', 'shopska-salad', 'lahpet-thoke']);
+  ADD('greens', ['gundruk-soup', 'kafuli', 'sai-bhaji', 'sukuma-wiki-ugali']);
+  ADD('breads', ['sattu-paratha', 'siddu', 'roti-canai', 'scallion-pancakes']);
+  ADD('baked-dough', ['sattu-paratha']);
+  ADD('fritters', ['dhuska', 'sabudana-vada', 'maddur-vada', 'kothimbir-vadi']);
+  ADD('chaat', ['bhutte-ka-kees', 'tamatar-chaat', 'ghugni', 'dabeli']);
+  ADD('upma', ['poha-jalebi']);
+  ADD('mumbai-street', ['dabeli']);
+  ADD('ladoo', ['ghevar']);
+  ADD('yogurt-curry', ['himachali-madra']);
+  ADD('chole', ['himachali-madra', 'ghugni', 'doubles']);
+  ADD('mixed-veg', ['khatkhate', 'undhiyu']);
+  ADD('steamed-cakes', ['ukadiche-modak', 'kothimbir-vadi']);
+  ADD('rice-cakes', ['ukadiche-modak', 'kiribath']);
+  ADD('dosa', ['adai']);
+  ADD('rasam', ['kara-kuzhambu']);
+  ADD('kheer', ['sakkarai-pongal', 'ada-pradhaman']);
+  ADD('south-veg-sides', ['olan', 'erissery']);
+  ADD('rolls', ['kolkata-kathi-roll', 'lumpia-gulay', 'kimbap']);
+  ADD('mumbai-street', ['kolkata-kathi-roll']);
+  ADD('okra', []);
+  ADD('gourds', ['jhinge-posto']);
+  ADD('custards', ['lagan-nu-custard', 'egg-tarts', 'pasteis-de-nata', 'chawanmushi']);
+  ADD('himalayan', ['dal-bhat', 'sel-roti', 'gundruk-soup']);
+  ADD('festive-snacks', ['sel-roti', 'ker-sangri']);
+  ADD('chutney', ['pol-sambol', 'ajvar']);
+  ADD('fried-rice', ['kottu-roti']);
+  ADD('eggplant-med', ['borani-banjan', 'badrijani-nigvzit', 'zaalouk', 'di-san-xian']);
+  ADD('halwa', ['halwa-puri']);
+  ADD('noodles', ['mee-goreng', 'yakisoba', 'pho-chay']);
+  ADD('pancakes', ['banh-xeo', 'jianbing', 'martabak-manis', 'dorayaki', 'pajeon', 'hotteok', 'cachapas', 'scallion-pancakes', 'liege-waffles']);
+  ADD('chocolate', ['champorado']);
+  ADD('bowls', ['onigiri', 'kimbap']);
+  ADD('kimchi-stews', ['kimbap', 'hotteok', 'pajeon']);
+  ADD('bean-stews', ['lobio', 'fasolada', 'red-red', 'moi-moi']);
+  ADD('stuffed-veg', ['gemista']);
+  ADD('cheese-melts', ['kasespatzle']);
+  ADD('potatoes-europe', ['kartoffelsalat', 'stamppot', 'caldo-verde']);
+  ADD('veg-soups', ['caldo-verde', 'fasolada', 'pho-chay']);
+  ADD('french-pastry', ['kanelbullar', 'pasteis-de-nata']);
+  ADD('fried-dough-sweets', ['puff-puff', 'mandazi', 'sopaipillas']);
+  ADD('batter-fried', ['kelewele']);
+  ADD('peanut-stew', ['sukuma-wiki-ugali']);
+  ADD('dips', ['ajvar', 'zaalouk']);
+  ADD('corn-breads', ['cornbread', 'cachapas', 'empanadas-humita']);
+  ADD('fruit-pies', ['pumpkin-pie', 'butter-tarts']);
+  ADD('savoury-pies', ['empanadas-humita', 'bolani']);
+  ADD('meringue', ['lamingtons']);
+  ADD('chaat', ['sev-tameta']);
+  ADD('breads', ['dal-pakwan', 'msemen']);
+  ADD('dal', ['dal-pakwan']);
+  ADD('bean-stews', ['chakalaka']);
+  ADD('custards', ['malva-pudding']);
+  ADD('stuffed-flatbreads', ['msemen']);
+  F('bakery-breads', 'Bakery breads', ['focaccia', 'brezel', 'cornbread', 'croissant', 'garlic-bread', 'pao-de-queijo'], [
+    ['France', 'Baguette: crisp crust, open crumb, baked several times a day.'],
+    ['Turkey', 'Simit: sesame-crusted bread rings sold from street carts.'],
+    ['Mumbai', 'Pav: soft bread rolls brought by the Portuguese, now the base of vada pav.'],
+  ]);
+  F('cookies', 'Biscuits & small cakes', ['anzac-biscuits', 'lamingtons', 'chocolate-chip-cookies', 'butter-tarts', 'dorayaki'], [
+    ['Scotland', 'Shortbread: butter, sugar and flour, nothing more.'],
+    ['Italy', 'Biscotti: twice-baked almond biscuits from Prato.'],
+    ['India', 'Nankhatai: ghee and cardamom shortbread baked in Surat.'],
+  ]);
+  F('stuffed-flatbreads', 'Stuffed flatbreads', ['aloo-paratha', 'paneer-paratha', 'sattu-paratha', 'bolani', 'khachapuri', 'roti-canai', 'pupusas', 'martabak-manis'], [
+    ['Turkey', 'Gözleme: thin dough filled with spinach and cheese, cooked on a griddle.'],
+    ['Lebanon', 'Manakish: flatbread with za’atar and olive oil.'],
+  ]);
+  F('plantains', 'Plantains', ['kelewele', 'red-red', 'pazham-pori', 'kerala-banana-chips'], [
+    ['Puerto Rico', 'Mofongo: mashed fried green plantain with garlic.'],
+    ['Colombia', 'Patacones: twice-fried flattened green plantain.'],
+  ]);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {
