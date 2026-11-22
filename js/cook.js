@@ -178,7 +178,7 @@
           <button class="icon-btn" data-c="smaller" aria-label="Smaller text">A−</button>
           <button class="icon-btn" data-c="bigger" aria-label="Bigger text">A+</button>
           <button class="icon-btn" data-c="speak" aria-pressed="${speaking}" title="Read steps aloud">${speaking ? '🔊' : '🔈'}</button>
-          <button class="btn sm" data-c="ing">🧾 Ingredients</button>
+          <button class="btn sm" data-c="ing" aria-label="Ingredients">🧾<span class="lbl"> Ingredients</span></button>
         </div>
         <div class="cook-progress"><div></div></div>
         <div class="cook-main"><div class="cook-inner"></div><div class="cook-dots"></div></div>

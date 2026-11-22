@@ -743,3 +743,182 @@ table.t td b { white-space: nowrap; }
   .page { animation: none; }
 }
 .photo-actions { display: flex; justify-content: center; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+
+/* =====================================================================
+   Phone polish: sizing, alignment and overflow fixes for small screens
+   ===================================================================== */
+/* Cook mode: never let a long word or button row push the screen wider than the phone */
+.cook { grid-template-columns: minmax(0, 1fr); }
+.cook-main { overflow-x: hidden; }
+.cook-top .ttl small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cook-top > * { flex-shrink: 0; }
+.cook-top > .ttl { flex-shrink: 1; }
+
+/* Fridge page columns (was an inline style that blocked the phone layout) */
+.pantry-cols { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); align-items: start; }
+.pantry-cols > .pantry-box { position: sticky; top: calc(var(--top-h) + 16px); }
+
+/* Stop quick double-taps from zooming the page */
+a, button, label, summary, .chip, .btn { touch-action: manipulation; }
+
+/* Form fields at 16px+ so iPhones do not zoom in when one is tapped */
+@media (max-width: 880px), (pointer: coarse) {
+  .input, .select, textarea, select, .hero-search input, .results-bar .select { font-size: 16px; }
+}
+@media (pointer: coarse) {
+  .chip { min-height: 34px; }
+  input[type="range"] { height: 30px; }
+}
+
+@media (max-width: 760px) {
+  .pantry-cols { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .pantry-cols > .pantry-box { position: static; }
+}
+
+@media (max-width: 600px) {
+  #app { padding: 14px 14px 104px; }
+  h1 { font-size: 2rem; }
+  .page-head { margin: 2px 0 18px; }
+  .page-head h1 { font-size: 1.72rem; }
+  .lead { font-size: 1rem; line-height: 1.55; }
+  .section-title { margin: 28px 0 12px; }
+  .section-title h2 { font-size: 1.28rem; }
+  .panel { padding: 16px; }
+  .btn.lg { padding: 13px 18px; font-size: 1rem; }
+
+  /* home */
+  .hero { padding-top: 4px; }
+  .hero-plate { max-width: 200px; }
+  .hero-plate .orbit { font-size: 1.6rem; }
+  .hero-plate .label { font-size: .76rem; padding: 6px 12px; }
+  .hero-search { margin: 18px 0 12px; }
+  .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .hero-actions .btn { justify-content: center; text-align: center; padding: 10px 8px; font-size: .84rem; line-height: 1.25; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 18px; }
+  .stat b { font-size: 1.3rem; }
+  .stat span { display: block; font-size: .68rem; line-height: 1.25; }
+  .sit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .sit { padding: 12px; }
+  .sit-ico { font-size: 1.35rem; margin-bottom: 2px; }
+  .sit b { font-size: .88rem; line-height: 1.25; }
+  .sit small { font-size: .72rem; }
+  .region-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .region { padding: 12px; min-height: 100px; }
+  .region b { font-size: 1.02rem; }
+  .region small { font-size: .72rem; }
+  .region .r-emoji { font-size: 2.2rem; right: 8px; }
+  .region .flags { font-size: .78rem; letter-spacing: 1px; }
+  .path-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .path-step { padding: 10px; font-size: .8rem; }
+  .india { padding: 14px; }
+  .feature-art { min-height: 170px; }
+  .feature-body { padding: 18px; }
+
+  /* recipe cards: two per row, compact */
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .rail { grid-auto-columns: minmax(150px, 46%); gap: 10px; }
+  .card-art { aspect-ratio: 4 / 3; }
+  .card-emoji { font-size: 2.6rem; }
+  .card-flag { left: 8px; top: 6px; font-size: 1rem; }
+  .card-pill { left: 8px; bottom: 6px; font-size: .62rem; padding: 2px 6px; }
+  .card-pill.cooked { left: auto; right: 8px; }
+  .card .fav { right: 6px; top: 6px; width: 32px; height: 32px; font-size: .9rem; }
+  .card-body { padding: 9px 10px 11px; }
+  .card .card-kicker { font-size: .6rem; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dish-hero { grid-template-columns: minmax(0, 1fr); }
+  .card h3 { font-size: .94rem; line-height: 1.22; margin: 3px 0 6px; }
+  .card-desc { display: none; }
+  .card-meta { gap: 4px 8px; font-size: .7rem; }
+  .grid.list { grid-template-columns: minmax(0, 1fr); }
+  .grid.list .card-art { width: 104px; aspect-ratio: auto; }
+  .grid.list .card-desc { display: -webkit-box; font-size: .8rem; margin-bottom: 6px; }
+  .grid.list .card .fav { right: 8px; top: 8px; }
+
+  /* explore toolbar */
+  .results-bar { gap: 8px; }
+  .results-bar .select { flex: 1 1 0; min-width: 0; }
+
+  /* dish page */
+  .dish-hero { gap: 14px; margin-bottom: 24px; }
+  .dish-title .local { font-size: 1.05rem; }
+  .meta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 14px 0; }
+  .meta { padding: 8px 10px; }
+  .meta small { font-size: .62rem; }
+  .meta b { font-size: .92rem; }
+  .dish-actions > * { flex: 1 1 auto; justify-content: center; }
+  .dish-actions > .btn.primary { flex: 1 1 100%; }
+  .ing .q { min-width: 64px; }
+
+  /* cook mode */
+  .cook-top { gap: 6px; padding: 8px 10px; }
+  .cook-top .icon-btn { width: 36px; height: 36px; }
+  .cook-top .btn .lbl { display: none; }
+  .cook-main { padding: 18px 16px 28px; }
+  .cook-inner h2 { font-size: 1.55rem; margin-bottom: 12px; }
+  .cook-text { font-size: calc(1.12rem * var(--cook-scale, 1)); }
+  .cook-bottom { gap: 8px; padding-left: 12px; padding-right: 12px; }
+  .cook-bottom .btn { padding: 14px 8px; font-size: .98rem; }
+
+  /* fridge */
+  .match { gap: 12px; padding: 12px; }
+  .match h3 { font-size: 1rem; }
+
+  /* planner: breakfast / lunch / dinner side by side for each day */
+  .week { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .day { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 10px; }
+  .day h3 { grid-column: 1 / -1; }
+  .slot { min-height: 62px; padding: 6px 7px; }
+  .slot.filled a { font-size: .76rem; }
+
+  /* my kitchen */
+  .me-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 22px; }
+  .me-stat { padding: 12px 14px; }
+  .me-stat b { font-size: 1.6rem; }
+  .me-stat span { font-size: .76rem; }
+  .me-stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .passport { grid-template-columns: repeat(auto-fill, minmax(74px, 1fr)); gap: 6px; padding: 12px; }
+  .stamp { padding: 8px 2px; font-size: .64rem; line-height: 1.2; border-radius: 10px; }
+  .stamp .f { font-size: 1.45rem; margin-bottom: 2px; }
+  .kv { flex-wrap: wrap; }
+
+  /* recipe editor */
+  .ed-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .ed-ing { display: grid; grid-template-columns: 76px minmax(0, 1fr) 40px; grid-template-areas: "q u x" "n n n" "note note note"; gap: 6px; padding: 8px 0 10px; border-bottom: 1px dashed var(--line); }
+  .ed-ing [data-f="q"] { grid-area: q; max-width: none; }
+  .ed-ing [data-f="u"] { grid-area: u; width: 100%; max-width: none; }
+  .ed-ing [data-f="n"] { grid-area: n; }
+  .ed-ing [data-f="note"] { grid-area: note; }
+  .ed-ing [data-ed="rm"] { grid-area: x; }
+  .ed-step { grid-template-columns: 30px minmax(0, 1fr) auto; gap: 8px; }
+  .ed-step-n { width: 30px; height: 30px; }
+  .taste-ed { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
+  .ed-actions .btn { flex: 1 1 auto; justify-content: center; }
+}
+
+@media (max-width: 370px) {
+  .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+  .hero-actions .btn { font-size: .8rem; }
+}
+
+/* Fridge quick-add: a swipeable two-row strip on phones so results stay close to the input */
+@media (max-width: 760px) {
+  .quick-chips { display: grid; grid-auto-flow: column; grid-template-rows: repeat(2, auto); justify-content: start; gap: 6px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+  .pantry-box { grid-template-columns: minmax(0, 1fr); }
+  .quick-chips::-webkit-scrollbar { display: none; }
+  .quick-chips .chip { white-space: nowrap; }
+}
+
+/* Phone polish, round 2 */
+@media (max-width: 600px) {
+  /* fridge results: percentage ring sits top-right instead of on its own row */
+  .match { grid-template-columns: 52px minmax(0, 1fr) 44px; align-items: start; }
+  .match .art { width: 52px; height: 52px; font-size: 1.7rem; border-radius: 12px; }
+  .match .pct { grid-column: auto; width: 44px; height: 44px; font-size: .72rem; }
+  .match .pct::before { inset: 5px; }
+  /* planner: keep the meal label clear of the remove button */
+  .slot .ml { font-size: .58rem; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .slot.filled .ml { padding-right: 20px; }
+  .slot .rm { width: 20px; height: 20px; top: 3px; right: 3px; font-size: .62rem; }
+  /* form grid: inputs line up even when one label wraps onto two lines */
+  .ed-grid > .fld { justify-content: flex-end; }
+}

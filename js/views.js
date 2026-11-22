@@ -564,8 +564,8 @@
       html: `
       <div class="page-head"><p class="eyebrow">Fridge raid</p><h1>What can I cook right now?</h1>
         <p class="lead">Add what's in your fridge and pantry. We'll rank every dish by how much you already have and tell you exactly what's missing.</p></div>
-      <div class="two-col" style="grid-template-columns:minmax(0,380px) 1fr;align-items:start">
-        <div class="panel pantry-box" style="position:sticky;top:calc(var(--top-h) + 16px)">
+      <div class="two-col pantry-cols">
+        <div class="panel pantry-box">
           <form class="pantry-input" data-do="add-form">
             <input class="input" id="pin" list="pantry-sug" placeholder="Type an ingredient…" autocomplete="off" aria-label="Add ingredient">
             <button class="btn primary">Add</button>
@@ -583,7 +583,7 @@
               <button class="btn sm ghost" data-do="ess-reset" style="margin-top:10px">Reset to default essentials</button>
             </details>
           </div>
-          <div><div class="small muted" style="margin-bottom:6px">Quick add:</div><div class="chips" id="quick"></div></div>
+          <div><div class="small muted" style="margin-bottom:6px">Quick add:</div><div class="chips quick-chips" id="quick"></div></div>
           <button class="btn sm ghost danger" data-do="clear" style="justify-self:start">Clear everything</button>
         </div>
         <div id="matches"></div>
@@ -600,7 +600,7 @@
           $('#essDetails').style.opacity = S.prefs.staples ? 1 : 0.5;
           const out = $('#matches');
           if (!S.pantry.length) {
-            out.innerHTML = `<div class="empty"><div class="big">🧺</div><h3>Your basket is empty</h3><p>Add at least one ingredient, like <b>chicken</b>, <b>rice</b> or <b>eggs</b>.</p></div>`;
+            out.innerHTML = `<div class="empty"><div class="big">🧺</div><h3>Your basket is empty</h3><p>Add at least one ingredient, like <b>paneer</b>, <b>potatoes</b> or <b>rice</b>.</p></div>`;
             return;
           }
           const m = V.matchPantry(S.pantry, S.prefs.staples);

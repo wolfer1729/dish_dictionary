@@ -2,7 +2,7 @@
    Used only when the app is opened from a web address (e.g. GitHub Pages on a phone).
    On first visit it saves the whole app AND every dish photo on the device, so it keeps working with no internet.
    (Opening index.html straight from disk on a PC does not use this file; that copy is already offline.) */
-const CACHE = 'dd-v11';
+const CACHE = 'dd-v12';
 const SHELL = [
   './', 'index.html', 'css/styles.css', 'manifest.webmanifest',
   'assets/icon.svg', 'assets/icon-192.png', 'assets/icon-512.png', 'assets/icon-maskable-512.png', 'assets/apple-touch-icon.png',
