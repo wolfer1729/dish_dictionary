@@ -433,7 +433,7 @@
   X(GR, {
     id: 'souvlaki', name: 'Chicken & Halloumi Souvlaki', local: 'Σουβλάκι',
     emoji: '🍢', course: 'main', level: 1, prep: 20, cook: 15, rest: 60, serves: 4,
-    taste: { herby: 4, savory: 4, sour: 3 }, diet: ['gluten-free', 'high-protein'], methods: ['grill'],
+    taste: { herby: 4, savory: 4, sour: 3 }, diet: ['high-protein'], methods: ['grill'],
     tags: ['summer', 'party', 'weeknight'],
     desc: 'Lemon-oregano marinated skewers grilled until charred, in pita with tzatziki.',
     story: 'Souvlaki (“little skewer”) is Greece’s favorite street food, sold everywhere from Athens kiosks to island beaches, wrapped in pita with tomato, onion and tzatziki.',

@@ -160,6 +160,7 @@
     [/cornstarch|corn ?flour|potato starch|tapioca starch|polvilho|arrowroot/, 375, 0.3, 90, 0.1, 0.9, 0, 9, { d: 0.55 }],
     [/glutinous rice flour|mochiko|shiratamako/, 370, 6, 80, 1.4, 2.4, 0, 5, { d: 0.6 }],
     [/rice flour|puttu podi/, 366, 6, 80, 1.4, 2.4, 0.1, 5, { d: 0.6 }],
+    [/ragi|finger millet|nachni/, 328, 7.3, 72, 1.3, 11.5, 0.5, 11, { d: 0.5 }],
     [/besan|gram flour|sattu/, 387, 22, 58, 6.7, 10.8, 10, 64, { d: 0.45 }],
     [/whole wheat|atta|teff/, 340, 13, 72, 2.5, 10.7, 0.4, 2, { d: 0.5 }],
     [/self-raising/, 354, 10, 74, 1, 2.7, 0.3, 1000, { d: 0.53 }],
@@ -226,6 +227,9 @@
     [/basil seeds|sabja|\bchia\b/, 450, 20, 42, 25, 38, 0, 10, { d: 0.65 }],
     [/desiccated|dry coconut|dried coconut/, 660, 6.9, 24, 64.5, 16.3, 7.4, 37, { d: 0.35 }],
     [/coconut/, 354, 3.3, 15, 33.5, 9, 6.2, 20, { d: 0.45 }],
+
+    // vegetables whose names would otherwise match meat words
+    [/moringa|drumstick pods|murungakkai/, 37, 2.1, 8.5, 0.2, 3.2, 0, 42, { e: 30 }],
 
     // ---- meat & fish (non-veg) ----
     [/carcass/, 200, 15, 0, 15, 0, 0, 70, { f: 0.15 }],

@@ -134,6 +134,11 @@
         return cont.length ? `<section class="block"><div class="block-head"><div><h2>🍽️ Continental classics</h2><p>Pastas, gratins, creamy soups and grills, the café-menu favorites.</p></div><a href="#/explore?styles=continental">See all →</a></div><div class="rail">${cards(cont)}</div></section>` : '';
       })()}
 
+      ${(() => {
+        const fams = (DD.FAMILIES || []).map((f) => [f, f.members.filter((id) => ds.some((x) => x.id === id)).length]).filter(([, n]) => n >= 3).sort((a, b) => b[1] - a[1]);
+        return fams.length ? `<section class="block"><div class="block-head"><div><h2>🗺️ One dish, many regions</h2><p>The same idea cooked differently from state to state and country to country.</p></div></div><div class="chips">${fams.map(([f, n]) => `<a class="chip" href="#/explore?family=${f.key}">${esc(f.name)} <span class="ct">${n}</span></a>`).join('')}</div></section>` : '';
+      })()}
+
       <section class="block">
         <div class="block-head"><div><h2>Browse by course</h2><p>From the first sip to the last spoon.</p></div></div>
         <div class="sit-grid">${[['soup', '🥣'], ['starter', '🍢'], ['salad', '🥗'], ['main', '🍛'], ['side', '🥔'], ['bread', '🫓'], ['sauce', '🫙'], ['breakfast', '🍳'], ['snack', '🛺'], ['dessert', '🍰'], ['drink', '🥤']]
@@ -195,6 +200,7 @@
   const GROUPS = [
     { k: 'region', label: 'Region', opts: () => Object.keys(DD.REGIONS).map((r) => [r, DD.REGIONS[r].emoji + ' ' + r]), get: (d) => [d.region] },
     { k: 'styles', label: 'Cuisine style', opts: () => Object.entries(L.styles), get: (d) => d.styles },
+    { k: 'family', label: 'Dish family (regional styles)', scroll: true, opts: () => (DD.FAMILIES || []).filter((f) => f.members.length > 1).map((f) => [f.key, f.name]), get: (d) => d.families || [] },
     { k: 'country', label: 'Country', scroll: true, opts: () => countries().map((c) => [c.name, c.flag + ' ' + c.name]), get: (d) => [d.country] },
     { k: 'area', label: 'Indian state / area', scroll: true, opts: () => [...new Set(DD.pool().map((d) => d.area).filter(Boolean))].sort().map((a) => [a, a]), get: (d) => (d.area ? [d.area] : []) },
     { k: 'tags', label: 'Situation & mood', opts: () => Object.entries(L.tags), get: (d) => d.tags },
@@ -438,6 +444,20 @@
   }
   V.nutHTML = nutHTML;
 
+  function regionalHTML(d) {
+    const fams = ((DD.familyOf || {})[d.id] || []).slice(0, 3);
+    if (!fams.length) return '';
+    const pool = new Set(DD.pool().map((x) => x.id));
+    return `<div class="section-title"><h2>🗺️ Regional styles</h2><span class="line"></span></div>
+      <div class="regional">${fams.map((f) => {
+        const others = f.members.filter((id) => id !== d.id && pool.has(id)).map((id) => DD.byId[id]);
+        return `<div class="reg-fam"><h3>${esc(f.name)}</h3>
+          ${others.length ? `<div class="reg-links">${others.map((x) => `<a class="reg-link" href="#/dish/${x.id}"><span class="e">${x.emoji}</span><span><b>${esc(x.name)}</b><small>${x.flag} ${esc(x.area || x.country)}</small></span></a>`).join('')}</div>` : ''}
+          ${f.notes.length ? `<p class="reg-sub">Other regional versions</p><ul class="reg-notes">${f.notes.map(([r, t]) => `<li><b>${esc(r)}:</b> ${esc(t)}</li>`).join('')}</ul>` : ''}
+          ${f.members.length > 1 ? `<a class="small" href="#/explore?family=${f.key}">See all ${f.members.length} recipes in this family →</a>` : ''}</div>`;
+      }).join('')}</div>`;
+  }
+
   V.dish = function (id) {
     const d = DD.byId[id];
     if (!d) return V.notFound();
@@ -507,6 +527,8 @@
 
           <div class="section-title"><h2>The story</h2><span class="line"></span></div>
           <div class="story"><p>${esc(d.story)}</p></div>
+
+          ${regionalHTML(d)}
 
           ${d.techs.length ? `<div class="callout info"><b>Skills you'll practice</b>${d.techs.filter((t) => DD.tech[t]).map((t) => `<button class="tech" data-act="tech" data-id="${t}">${DD.tech[t].icon} ${esc(DD.tech[t].name)}</button>`).join(' ')}</div>` : ''}
 
