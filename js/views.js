@@ -161,6 +161,11 @@
         <div class="rail">${cards(quick)}</div>
       </section>
 
+      ${(() => {
+        const five = ds.filter((d) => d.tags.includes('five') && d.course !== 'drink').sort(() => rnd() - 0.5).slice(0, 12);
+        return five.length ? `<section class="block"><div class="block-head"><div><h2>🖐️ 5 ingredients or less</h2><p>Short shopping list, big flavor. Salt, pepper, oil and water don’t count.</p></div><a href="#/explore?tags=five">See all →</a></div><div class="rail">${cards(five)}</div></section>` : '';
+      })()}
+
       <section class="block">
         <div class="block-head"><div><h2>🛋️ Comfort from around the world</h2><p>Bowls and pots that feel like a hug.</p></div><a href="#/explore?tags=comfort">See all →</a></div>
         <div class="rail">${cards(comfort)}</div>

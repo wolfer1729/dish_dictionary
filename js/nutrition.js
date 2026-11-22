@@ -18,7 +18,7 @@
   const T = [
     // ---- not eaten / no calories ----
     [/charcoal|banana lea|corn husk|silver leaf|food colou?r|gel food/, 0, 0, 0, 0, 0, 0, 0, { z: 1 }],
-    [/\bice\b|ice cubes|crushed ice|\bwater\b(?! chestnut)|soda water|rose water|kewra|orange blossom|cream of tartar/, 0, 0, 0, 0, 0, 0, 2, { d: 1 }],
+    [/\bice\b(?! cream)|ice cubes|crushed ice|\bwater\b(?! chestnut)|soda water|rose water|kewra|orange blossom|cream of tartar/, 0, 0, 0, 0, 0, 0, 2, { d: 1 }],
     [/\b(tea|coffee|espresso|matcha|hibiscus|rose petals)\b/, 2, 0.1, 0.3, 0, 0, 0, 2, { d: 0.5, e: 2 }],
     [/agar jelly|jelly cubes/, 60, 0, 15, 0, 0.5, 14, 5, {}],
     [/agar/, 0, 0, 0, 0, 0, 0, 0, { d: 0.6 }],
@@ -115,7 +115,7 @@
     [/vinegar/, 20, 0, 0.6, 0, 0, 0.4, 2, { d: 1.01 }],
     [/mirin/, 241, 0.3, 43, 0, 0, 43, 5, { d: 1.1 }],
     [/sake|shaoxing|rice wine/, 134, 0.5, 5, 0, 0, 0, 5, { d: 1.0 }],
-    [/\bwine\b|marsala/, 85, 0.1, 2.6, 0, 0, 0.9, 5, { d: 1.0 }],
+    [/\bwine\b|marsala|sherry/, 85, 0.1, 2.6, 0, 0, 0.9, 5, { d: 1.0 }],
     [/\bbeer\b/, 43, 0.5, 3.6, 0, 0, 0, 4, { d: 1.0 }],
     [/\brum\b|kirsch|amaretto|brandy/, 230, 0, 5, 0, 0, 4, 1, { d: 0.95 }],
 
@@ -177,6 +177,9 @@
     [/rice noodles|rice vermicelli|rice sticks/, 364, 6, 80, 0.6, 1.6, 0, 180, {}],
     [/glass noodles|dangmyeon|cellophane/, 351, 0.2, 86, 0.1, 0.5, 0, 10, {}],
     [/falooda/, 350, 0.3, 87, 0.1, 0.5, 0, 10, {}],
+    [/gnocchi/, 150, 3.5, 32, 0.5, 2, 0.5, 400, {}],
+    [/rolled oats|\boats\b|oatmeal/, 389, 16.9, 66, 6.9, 10.6, 1, 2, { d: 0.4 }],
+    [/quinoa/, 368, 14.1, 64, 6.1, 7, 0, 5, { cookedAs: [120, 4.4, 21.3, 1.9, 2.8, 0.9, 7] }],
     [/udon/, 105, 2.6, 21.6, 0.4, 1, 0, 120, { e: 200 }],
     [/ramen/, 280, 9, 55, 2, 2.5, 1, 450, { e: 130 }],
     [/spaghetti|penne|fettuccine|macaroni|ditalini|trofie|linguine|rigatoni|lasagna|pasta|vermicelli|semiya|noodles/, 371, 13, 75, 1.5, 3.2, 2.7, 6, { sh: 20 }],
@@ -334,6 +337,7 @@
     [/raisins|sultanas/, 299, 3.1, 79, 0.5, 3.7, 59, 11, { d: 0.6 }],
     [/apples?/, 52, 0.3, 13.8, 0.2, 2.4, 10.4, 1, { e: 180 }],
     [/\bpears?\b/, 57, 0.4, 15, 0.1, 3.1, 9.8, 1, { e: 180 }],
+    [/watermelon|cantaloupe|musk ?melon/, 30, 0.6, 7.6, 0.2, 0.4, 6.2, 1, {}],
     [/berries|strawberr|mixed fruit|passion|kiwi|grapes/, 45, 0.8, 11, 0.3, 2.5, 7, 1, {}],
   ];
 

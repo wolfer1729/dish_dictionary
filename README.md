@@ -2,9 +2,11 @@
 
 A world recipe app that teaches a complete beginner to cook like a professional, and runs **completely offline** on your PC.
 
-- **315 dishes from 44 countries**: 145 Indian (dhaba, Mughlai, tandoori, South Indian, Indo-Chinese, chaat, ghar ka khana, mithai, from 19 states) and 69 Continental.
-- **196 pure-veg dishes**, plus 38 with egg. There are **no beef or veal dishes**, and a built-in guard rejects any recipe containing them.
+- **353 dishes from 47 countries**: 157 Indian (dhaba, Mughlai, tandoori, South Indian, Indo-Chinese, chaat, ghar ka khana, mithai, from 19 states) and 79 Continental.
+- **225 pure-veg dishes**, plus 43 with egg. There are **no beef or veal dishes**, and a built-in guard rejects any recipe containing them.
 - **Every course**: mains, soups, starters, salads, sides, chutneys and dips, breads, breakfasts, snacks and street food, desserts and drinks.
+- **Nutrition for every dish**: calories, protein, carbs, fat, fibre, sugar and sodium per serving or for the whole recipe, with filters and sorting.
+- **68 dishes with 5 ingredients or less** (salt, pepper, oil and water don't count), plus a set of easy weeknight dinners.
 - **Reference photos**: freely licensed photos from Wikimedia Commons, stored locally with author and license credit.
 
 No build step and no dependencies: plain HTML, CSS and JavaScript.
@@ -15,10 +17,10 @@ Double-click `index.html`. That's it. Everything (fonts, flags, photos) is insid
 
 ## On your phone
 
-The phone version is hosted free on **GitHub Pages**. Open it once with internet and it saves itself on the phone (the whole app plus all 315 photos, about 22 MB). After that it works with no internet, like a normal app.
+The phone version is hosted free on **GitHub Pages**. Open it once with internet and it saves itself on the phone (the whole app plus every photo, about 22 MB). After that it works with no internet, like a normal app.
 
 1. On the phone, open the GitHub Pages link (`https://<your-username>.github.io/dish-dictionary/`) in **Chrome** (Android) or **Safari** (iPhone).
-2. Wait a few seconds for the message **"📱 Saved on this device: all 315 photos"**. *My kitchen → Offline copy* also shows the status.
+2. Wait a few seconds for the message **"📱 Saved on this device"**. *My kitchen → Offline copy* also shows the status.
 3. Install it:
    - **Android:** Chrome menu ⋮ → **Add to Home screen** → **Install**.
    - **iPhone:** Share button → **Add to Home Screen**.
@@ -38,6 +40,8 @@ The phone version is hosted free on **GitHub Pages**. Open it once with internet
 | **Explore** | Faceted filters with live counts: region, cuisine style, country, Indian state, situation (date night, budget, rainy day…), course, taste, diet and allergies, skill, method, time, heat, source (my recipes / has photo), and an **avoid ingredients** box. 10 sort orders. |
 | **What can I cook?** | Type what's in your fridge to rank every dish by % match, with missing items listed and one tap to add them to your shopping list. **My essentials**: oil, salt, chili, garlic, ginger, onion, spices and so on always count as "I have it". The list is editable and saved. |
 | **➕ My recipes** | Add your own dishes with a full editor: ingredients (with groups), steps with timers, tips, diet, taste profile, cuisine style and a photo. They get scaling, unit conversion, cook mode, planner and shopping lists like every other recipe. You can edit or delete them any time. |
+| **🔥 Nutrition** | Every recipe shows estimated calories, protein, carbs, fat, fibre, sugar and sodium, with % of a 2,000 kcal day and where the calories come from. Switch between *per serving* and *whole recipe* (it follows the servings you choose). Explore has nutrition filters (protein 15 g+ / 25 g+, high fibre, under 350 / 500 kcal, low carb, low fat, low sugar, low sodium) and sorts (most protein, fewest calories, most fibre). Cards show calories; the planner adds up each day. |
+| **🖐️ 5 ingredients or less** | Worked out automatically for every recipe, including your own: salt, pepper, oil and water don't count. |
 | **Recipe page** | Photo, servings scaler, metric ↔ US units, ingredient checklist, flavor profile, history, steps with timers, tap-to-learn technique words, chef's secrets, mistakes, variations, pairings, similar dishes, print. |
 | **Cook mode** | Full screen, one step at a time, big text, swipe or arrow keys, timers with sound, read-aloud, and the screen stays awake. |
 | **Cooking school** | 13 lessons (including *Dhaba secrets*), 57 technique how-tos, a Beginner's Path, Fix-my-dish, substitutions, temperatures, heat guide, converter, world pantry. |
@@ -55,6 +59,7 @@ assets/photos/             dish photos (Wikimedia Commons, credited in js/data/p
 js/core.js                 data registry, units & scaling, veg logic, state, helpers
 js/data/*.js               recipes (by region, plus veg / course collections)
 js/data/photos.js          photo file + author + license for each dish
+js/nutrition.js            nutrition estimates (food table, unit-to-gram conversion)
 js/learn-data.js           techniques, lessons, beginner path, toolkit data
 js/views.js                home, explore, dish, pantry, planner, shopping, my kitchen
 js/mine.js                 your own recipes: editor, storage

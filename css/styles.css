@@ -954,3 +954,10 @@ a, button, label, summary, .chip, .btn { touch-action: manipulation; }
   .nut-kcal b { font-size: 2rem; }
   .day .day-nut { grid-column: 1 / -1; }
 }
+
+/* Explore toolbar on phones: count + Filters on one row, sort / view / random on the next */
+@media (max-width: 600px) {
+  .results-bar::before { content: ''; order: 1; flex-basis: 100%; height: 0; }
+  .results-bar .select, .results-bar .seg, .results-bar [data-do="random"] { order: 2; }
+  .results-bar .select { flex: 1 1 0; min-width: 0; }
+}

@@ -58,12 +58,13 @@
       party: '🎉 Feeds a crowd', 'date-night': '🕯️ Date night', impress: '🏆 Impress guests',
       kids: '🧒 Kid friendly', 'meal-prep': '📦 Meal prep', 'one-pot': '🍲 One pot', healthy: '🥗 Light & healthy',
       summer: '☀️ Hot day', winter: '❄️ Cold day', 'rainy-day': '🌧️ Rainy day', brunch: '🥞 Weekend brunch',
-      'street-food': '🛺 Street food', festive: '🎊 Festive', 'make-ahead': '🗓️ Make ahead',
+      'street-food': '🛺 Street food', festive: '🎊 Festive', 'make-ahead': '🗓️ Make ahead', five: '🖐️ 5 ingredients or less',
     },
   };
 
   DD.SITUATIONS = [
     { icon: '⚡', t: 'I have 20 minutes', s: 'Fast, no-fuss and still delicious', q: 'time=20' },
+    { icon: '🖐️', t: '5 ingredients or less', s: 'Short shopping list, big flavor', q: 'tags=five' },
     { icon: '🌙', t: 'Weeknight dinner', s: 'Reliable, under an hour', q: 'tags=weeknight&time=45' },
     { icon: '🛋️', t: 'Need comfort', s: 'Warm, hearty, soul-hugging', q: 'tags=comfort' },
     { icon: '🕯️', t: 'Date night', s: 'Romantic and a little special', q: 'tags=date-night' },
@@ -107,6 +108,9 @@
     if (!d.items.some((i) => NUTS.test(i[2]))) d.diet.push('nut-free');
     d.tags = d.tags || [];
     if (d.total <= 30 && !d.tags.includes('quick')) d.tags.push('quick');
+    // "5 ingredients or less", not counting salt, pepper, oil and water (the usual cookbook rule)
+    d.coreCount = d.items.filter((i) => i[0] != null && !STAPLE.test(String(i[2]).trim()) && !/optional|to serve|garnish/i.test(i[3] || '')).length;
+    if (d.coreCount <= 5 && !d.tags.includes('five')) d.tags.push('five');
     d.methods = d.methods || [];
     const techs = new Set();
     d.steps.forEach((s) => { (s[1] + ' ' + (s[3] || '')).replace(TECH_RE, (_, id) => techs.add(id)); });
@@ -121,6 +125,7 @@
     DD.byId[d.id] = d;
   };
   const EGG = /\b(eggs?|egg yolks?|egg whites?|mayonnaise)\b/i;
+  const STAPLE = /^(salt|black salt|flaky (sea )?salt|coarse (sea )?salt|black pepper|pepper|white pepper|(cold |hot |warm |ice |boiling |chilled )?water|ice|ice cubes|crushed ice|(neutral |olive |extra-virgin olive |vegetable |sunflower )?oil)$/i;
 
   DD.remove = function (id) {
     const i = DD.dishes.findIndex((d) => d.id === id);
