@@ -922,3 +922,35 @@ a, button, label, summary, .chip, .btn { touch-action: manipulation; }
   /* form grid: inputs line up even when one label wraps onto two lines */
   .ed-grid > .fld { justify-content: flex-end; }
 }
+
+/* ---------- nutrition ---------- */
+.nut-title .seg { margin-left: 4px; }
+.nut { display: grid; gap: 14px; }
+.nut-top { display: flex; align-items: center; gap: 14px 22px; flex-wrap: wrap; }
+.nut-kcal { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.nut-kcal b { font-family: var(--display); font-size: 2.4rem; line-height: 1; }
+.nut-kcal span { color: var(--ink-3); font-size: .86rem; font-weight: 500; }
+.nut-split { flex: 1 1 220px; min-width: 0; }
+.nut-split .bar3 { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--surface-2); }
+.nut-split .bar3 i { display: block; height: 100%; }
+.nut-split .legend { display: flex; gap: 6px 14px; flex-wrap: wrap; font-size: .76rem; color: var(--ink-3); margin-top: 6px; font-weight: 600; }
+.nut-split .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.nut .p { background: var(--green); } .nut .c { background: var(--gold); } .nut .f { background: var(--accent); }
+.nut-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.nut-cell { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 12px; }
+.nut-cell small { display: block; color: var(--ink-3); font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.nut-cell b { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.nut-cell b span { font-size: .78rem; font-weight: 600; color: var(--ink-3); margin-left: 2px; }
+.nut-cell .dv { height: 5px; border-radius: 3px; background: var(--surface-2); margin-top: 6px; overflow: hidden; }
+.nut-cell .dv i { display: block; height: 100%; background: var(--ink-3); border-radius: 3px; }
+.nut-cell .dvp { display: block; font-size: .68rem; color: var(--ink-3); margin-top: 3px; }
+.nut-note { font-size: .78rem; color: var(--ink-3); margin: 0; line-height: 1.5; }
+.day-nut { font-size: .72rem; color: var(--ink-3); font-weight: 600; margin-top: -4px; }
+@media (max-width: 600px) {
+  .nut-title { flex-wrap: wrap; }
+  .nut-title .line { display: none; }
+  .nut-title .seg { margin-left: auto; }
+  .nut-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .nut-kcal b { font-size: 2rem; }
+  .day .day-nut { grid-column: 1 / -1; }
+}

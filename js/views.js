@@ -31,7 +31,7 @@
         <div class="card-kicker">${DD.vmark(d)}${esc(d.area || d.country)} · ${esc((L.course[d.course] || '').split(' ')[0])}</div>
         <h3><a href="#/dish/${d.id}">${esc(d.name)}</a></h3>
         <p class="card-desc">${esc(d.desc)}</p>
-        <div class="card-meta"><span>⏱ ${fmtMin(d.total)}</span>${levelDots(d.level)}${d.spice ? `<span title="Heat ${d.spice}/5">${heat(Math.ceil(d.spice / 2))}</span>` : ''}<span>🍽 ${d.serves}</span></div>
+        <div class="card-meta"><span>⏱ ${fmtMin(d.total)}</span>${levelDots(d.level)}${d.spice ? `<span title="Heat ${d.spice}/5">${heat(Math.ceil(d.spice / 2))}</span>` : ''}<span title="Calories per serving">🔥 ${Math.round(DD.nutrition(d).per.kcal)} kcal</span></div>
       </div>
     </article>`;
   }
@@ -166,6 +166,11 @@
         <div class="rail">${cards(comfort)}</div>
       </section>
 
+      ${(() => {
+        const hp = ds.filter((d) => d.vclass === 'veg' && d.course !== 'drink' && DD.nutrition(d).per.protein >= 15).sort((a, b) => DD.nutrition(b).per.protein - DD.nutrition(a).per.protein).slice(0, 12);
+        return hp.length ? `<section class="block"><div class="block-head"><div><h2>💪 Protein-packed vegetarian</h2><p>15 g or more protein a serving, with no meat or eggs.</p></div><a href="#/explore?nut=p15&sort=protein">See all →</a></div><div class="rail">${cards(hp)}</div></section>` : '';
+      })()}
+
       ${cookedN ? '' : `<section class="block panel" style="text-align:center;padding:36px">
         <h2>Your culinary passport is empty ✈️</h2>
         <p class="muted">Cook any dish and tap <b>“I cooked this”</b> to collect a stamp from that country. ${nC} countries to collect.</p>
@@ -191,6 +196,7 @@
     { k: 'course', label: 'Course', opts: () => Object.entries(L.course), get: (d) => [d.course] },
     { k: 'tastes', label: 'Taste', hint: 'match all', all: true, opts: () => Object.entries(L.tastes), get: (d) => d.tastes },
     { k: 'diet', label: 'Diet & allergies', hint: 'match all', all: true, opts: () => Object.entries(L.diet), get: (d) => d.diet },
+    { k: 'nut', label: 'Nutrition per serving', hint: 'match all', all: true, opts: () => Object.entries(DD.NUT.flags), get: (d) => DD.nutrition(d).flags },
     { k: 'level', label: 'Skill level', opts: () => Object.entries(L.level), get: (d) => [String(d.level)] },
     { k: 'source', label: 'Source', opts: () => [['mine', '👩‍🍳 My own recipes'], ['photo', '📷 Has a photo']], get: (d) => [d.mine ? 'mine' : '', d.photo ? 'photo' : ''] },
     { k: 'methods', label: 'Cooking method', opts: () => Object.entries(L.methods), get: (d) => d.methods },
@@ -204,6 +210,10 @@
     easy: ['Easiest first', (a, b) => a.level - b.level || a.total - b.total],
     hard: ['Most challenging', (a, b) => b.level - a.level || b.total - a.total],
     few: ['Fewest ingredients', (a, b) => a.items.length - b.items.length],
+    protein: ['Most protein', (a, b) => DD.nutrition(b).per.protein - DD.nutrition(a).per.protein],
+    lowcal: ['Fewest calories', (a, b) => DD.nutrition(a).per.kcal - DD.nutrition(b).per.kcal],
+    fiber: ['Most fibre', (a, b) => DD.nutrition(b).per.fiber - DD.nutrition(a).per.fiber],
+    pdense: ['Most protein per calorie', (a, b) => { const r = (d) => { const p = DD.nutrition(d).per; return p.kcal ? p.protein / p.kcal : 0; }; return r(b) - r(a); }],
     hot: ['Spiciest first', (a, b) => b.spice - a.spice],
     mild: ['Mildest first', (a, b) => a.spice - b.spice],
     country: ['By country', (a, b) => a.country.localeCompare(b.country) || a.name.localeCompare(b.name)],
@@ -297,7 +307,7 @@
               const on = F[g.k].includes(v);
               return { v, l, n, on };
             }).filter((o) => o.n || o.on || g.k !== 'country');
-            const isOpen = openState[g.k] != null ? openState[g.k] : (F[g.k].length > 0 || ['region', 'styles', 'tags', 'diet'].includes(g.k));
+            const isOpen = openState[g.k] != null ? openState[g.k] : (F[g.k].length > 0 || ['region', 'styles', 'tags', 'diet', 'nut'].includes(g.k));
             return `<details class="fgroup" data-k="${g.k}" ${isOpen ? 'open' : ''}>
               <summary>${g.label}${g.hint ? `<span class="hint">(${g.hint})</span>` : ''}${F[g.k].length ? ` <span class="badge">${F[g.k].length}</span>` : ''}</summary>
               <div class="chips ${g.scroll ? 'scroll' : ''}">${opts.map((o) => `<button class="chip ${o.on ? 'on' : ''} ${!o.n && !o.on ? 'zero' : ''}" data-do="toggle" data-k="${g.k}" data-v="${esc(o.v)}" aria-pressed="${o.on}">${esc(o.l)} <span class="ct">${o.n}</span></button>`).join('')}</div>
@@ -399,6 +409,30 @@
     }).sort((a, b) => b[1] - a[1]).slice(0, 4).map((x) => x[0]);
   }
 
+  function nutHTML(d, mode, serv) {
+    const n = DD.nutrition(d), N = DD.NUT;
+    const mult = mode === 'all' ? serv : 1;
+    const v = {}; N.keys.forEach((k) => { v[k] = n.per[k] * mult; });
+    const pc = n.per.protein * 4, cc = n.per.carbs * 4, fc = n.per.fat * 9, tot = pc + cc + fc || 1;
+    const pct = (x) => Math.round((x / tot) * 100);
+    const cells = N.keys.filter((k) => k !== 'kcal').map((k) => {
+      const dv = Math.round((v[k] / N.dv[k]) * 100);
+      return `<div class="nut-cell"><small>${N.icon[k]} ${N.label[k]}</small><b>${N.fmt(k, v[k])}<span>${N.unit[k]}</span></b>${mode === 'one' ? `<div class="dv"><i style="width:${Math.min(100, dv)}%"></i></div><span class="dvp">${dv}% of a day</span>` : ''}</div>`;
+    }).join('');
+    const flags = n.flags.map((f) => `<a class="tag green" href="#/explore?nut=${f}" style="text-decoration:none">${esc(N.flags[f])}</a>`).join(' ');
+    return `<div class="nut">
+      <div class="nut-top">
+        <div class="nut-kcal"><b>${N.fmt('kcal', v.kcal)}</b><span>kcal ${mode === 'all' ? `for all ${serv} serving${serv === 1 ? '' : 's'}` : 'per serving'}${mode === 'one' ? ` · ${Math.round((v.kcal / N.dv.kcal) * 100)}% of a 2,000 kcal day` : ''}</span></div>
+        <div class="nut-split" aria-label="Where the calories come from"><div class="bar3"><i class="p" style="width:${pct(pc)}%"></i><i class="c" style="width:${pct(cc)}%"></i><i class="f" style="width:${pct(fc)}%"></i></div>
+          <div class="legend"><span><i class="p"></i>Protein ${pct(pc)}%</span><span><i class="c"></i>Carbs ${pct(cc)}%</span><span><i class="f"></i>Fat ${pct(fc)}%</span></div></div>
+      </div>
+      <div class="nut-grid">${cells}</div>
+      ${flags ? `<div class="chips">${flags}</div>` : ''}
+      <p class="nut-note">Estimated from the ingredient list. Deep-frying oil is counted at what the food soaks up and “to taste” salt at about ¼ tsp a serving. Daily % is for an average adult eating 2,000 kcal.</p>
+    </div>`;
+  }
+  V.nutHTML = nutHTML;
+
   V.dish = function (id) {
     const d = DD.byId[id];
     if (!d) return V.notFound();
@@ -431,6 +465,7 @@
             <div class="meta"><small>Total</small><b>${fmtMin(d.total)}</b></div>
             <div class="meta"><small>Level</small><b>${L.level[d.level]}</b></div>
             <div class="meta"><small>Heat</small><b>${d.spice ? heat(Math.ceil(d.spice / 2)) : 'None'}</b></div>
+            <div class="meta"><small>Per serving</small><b>🔥 ${Math.round(DD.nutrition(d).per.kcal)} kcal</b></div>
           </div>
           <div class="dish-actions">
             <a class="btn primary lg" href="#/cook/${d.id}">👩‍🍳 Start cook mode</a>
@@ -461,6 +496,9 @@
           <div class="section-title"><h2>Flavor profile</h2><span class="line"></span></div>
           <div class="taste-bars">${tasteBars}</div>
           <div class="chips" style="margin-top:16px">${dietTags} ${sitTags}</div>
+
+          <div class="section-title nut-title"><h2>Nutrition</h2><span class="line"></span><div class="seg" role="group" aria-label="Show nutrition for"><button data-do="nut" data-v="one" class="on">Per serving</button><button data-do="nut" data-v="all">Whole recipe</button></div></div>
+          <div id="nutBox">${nutHTML(d, 'one', serv)}</div>
 
           <div class="section-title"><h2>The story</h2><span class="line"></span></div>
           <div class="story"><p>${esc(d.story)}</p></div>
@@ -493,16 +531,23 @@
         </article>
       </div>`,
       mount(root) {
+        let nutMode = 'one';
+        const drawNut = () => { root.querySelector('#nutBox').innerHTML = nutHTML(d, nutMode, S.servings[d.id] || d.serves); };
         root.addEventListener('click', (e) => {
           const b = e.target.closest('[data-do]');
           if (!b) return;
           const act = b.dataset.do;
-          if (act === 'serv') {
+          if (act === 'nut') {
+            nutMode = b.dataset.v;
+            root.querySelectorAll('[data-do="nut"]').forEach((x) => x.classList.toggle('on', x === b));
+            drawNut();
+          } else if (act === 'serv') {
             const cur = S.servings[d.id] || d.serves;
             const nx = Math.max(1, Math.min(60, cur + +b.dataset.v));
             S.servings[d.id] = nx;
             root.querySelector('#servOut').textContent = nx + (nx === 1 ? ' serving' : ' servings');
             root.querySelector('#ingList').innerHTML = ingHTML(d, nx / d.serves);
+            if (nutMode === 'all') drawNut();
           } else if (act === 'step') {
             b.closest('.step').classList.toggle('done');
           } else if (act === 'shop') {
@@ -707,12 +752,13 @@
   V.planner = function () {
     const todayI = (new Date().getDay() + 6) % 7;
     function weekHTML() {
-      return DAYS.map((day, i) => `<div class="day ${i === todayI ? 'today' : ''}"><h3>${day}${i === todayI ? '<span style="color:var(--accent)">Today</span>' : ''}</h3>
+      return DAYS.map((day, i) => { const dd = MEALS.map((m) => DD.byId[S.plan[i + '|' + m]]).filter(Boolean); const kc = dd.reduce((s, x) => s + DD.nutrition(x).per.kcal, 0), pr = dd.reduce((s, x) => s + DD.nutrition(x).per.protein, 0);
+        return `<div class="day ${i === todayI ? 'today' : ''}"><h3>${day}${i === todayI ? '<span style="color:var(--accent)">Today</span>' : ''}</h3>${dd.length ? `<div class="day-nut">🔥 ${Math.round(kc)} kcal · 💪 ${Math.round(pr)} g protein</div>` : ''}
         ${MEALS.map((m) => {
           const d = DD.byId[S.plan[i + '|' + m]];
           return d ? `<div class="slot filled" style="--h:${d.hue}"><span class="ml">${m}</span><a href="#/dish/${d.id}">${d.emoji} ${esc(d.name)}</a><span class="muted">${d.flag} ${fmtMin(d.total)}</span><button class="rm" data-do="rm" data-slot="${i}|${m}" aria-label="Remove">✕</button></div>`
             : `<button class="slot empty-slot" data-do="pick" data-slot="${i}|${m}"><span class="ml">${m}</span>+ Add dish</button>`;
-        }).join('')}</div>`).join('');
+        }).join('')}</div>`; }).join('');
     }
     const planned = () => Object.values(S.plan).map((id) => DD.byId[id]).filter(Boolean);
     return {
@@ -731,7 +777,7 @@
           root.querySelector('#week').innerHTML = weekHTML();
           const p = planned();
           const regions = new Set(p.map((d) => d.country));
-          root.querySelector('#planSummary').textContent = p.length ? `${p.length} meals planned across ${regions.size} ${regions.size === 1 ? 'country' : 'countries'} · about ${fmtMin(p.reduce((s, d) => s + d.prep + d.cook, 0))} of hands-on and cooking time.` : 'Tip: open any recipe and tap 📅 Plan, or use the + buttons above.';
+          root.querySelector('#planSummary').textContent = p.length ? `${p.length} meals planned across ${regions.size} ${regions.size === 1 ? 'country' : 'countries'} · about ${fmtMin(p.reduce((s, d) => s + d.prep + d.cook, 0))} of hands-on and cooking time.${(() => { const days = DAYS.map((_, i) => MEALS.map((m) => DD.byId[S.plan[i + '|' + m]]).filter(Boolean)).filter((x) => x.length); return days.length ? ` Planned days average ${Math.round(days.reduce((s, x) => s + x.reduce((t, y) => t + DD.nutrition(y).per.kcal, 0), 0) / days.length)} kcal and ${Math.round(days.reduce((s, x) => s + x.reduce((t, y) => t + DD.nutrition(y).per.protein, 0), 0) / days.length)} g protein (one serving of each dish).` : ''; })()}` : 'Tip: open any recipe and tap 📅 Plan, or use the + buttons above.';
         };
         rerender();
         root.addEventListener('click', (e) => {
