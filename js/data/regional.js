@@ -586,6 +586,81 @@
     ['United Kingdom', 'Apple crumble: no pastry, a buttery crumb topping.'],
   ]);
 
+  /* ---------------- batch 3: add new dishes to their families ---------------- */
+  const ADD = (key, ids) => { const f = DD.FAMILIES.find((x) => x.key === key); if (f) ids.forEach((id) => { if (DD.byId[id] && !f.members.includes(id)) f.members.push(id); }); };
+  ADD('dal', ['gujarati-dal', 'cholar-dal', 'kerala-parippu-curry', 'maharashtrian-amti', 'panchmel-dal', 'khatti-dal', 'mamidikaya-pappu']);
+  ADD('yogurt-curry', ['gujarati-kadhi', 'mor-kuzhambu']);
+  ADD('cucumber-yogurt', ['perugu-pachadi']);
+  ADD('potato', ['kashmiri-dum-aloo', 'aloo-vellulli-karam']);
+  ADD('potatoes-europe', ['gratin-dauphinois', 'colcannon']);
+  ADD('okra', ['bharwan-bhindi']);
+  ADD('brinjal', ['begun-bhaja', 'bharli-vangi']);
+  ADD('chole', ['pindi-chole']);
+  ADD('pulao', ['kashmiri-pulao', 'bagara-rice']);
+  ADD('khichdi', ['bhoger-khichuri']);
+  ADD('steamed-cakes', ['khandvi', 'handvo', 'patra']);
+  ADD('gram-flour', ['khandvi', 'pitla-bhakri', 'patra', 'shiro-wat']);
+  ADD('chutney', ['thecha', 'gongura-pachadi', 'salla-mirapakayalu']);
+  ADD('mixed-veg', ['shukto']);
+  ADD('chaat', ['kolkata-puchka']);
+  ADD('breads', ['kerala-parotta', 'laccha-paratha', 'paneer-paratha', 'pitla-bhakri', 'sarva-pindi', 'dibba-rotte']);
+  ADD('paneer', ['chaman-kaliya', 'paneer-paratha']);
+  ADD('milk-sweets', ['sandesh', 'mishti-doi', 'bhapa-doi']);
+  ADD('ladoo', ['besan-ladoo', 'sunnundalu']);
+  ADD('halwa', ['moong-dal-halwa', 'karah-prasad']);
+  ADD('kheer', ['bengali-payesh', 'chak-hao-kheer', 'gil-e-firdaus', 'pala-poorilu']);
+  ADD('coolers', ['neer-mor', 'panakam', 'ragi-ambali']);
+  ADD('tea', ['sulaimani']);
+  ADD('rasam', ['pacchi-pulusu', 'ulava-charu']);
+  ADD('variety-rice', ['pulihora', 'capsicum-rice', 'nuvvula-saddi']);
+  ADD('fritters', ['alasanda-vada', 'makka-garelu', 'punugulu', 'perugu-vada']);
+  ADD('festive-snacks', ['chegodilu', 'shakkarpara']);
+  ADD('egg-curry', ['egg-methi-malai']);
+  ADD('hyderabadi', ['khatti-dal', 'bagara-rice', 'gil-e-firdaus', 'qubani-ka-meetha']);
+  ADD('fried-dough-sweets', ['badusha', 'gujiya', 'unniyappam']);
+  ADD('rice-cakes', ['unniyappam']);
+  ADD('lentils-world', ['ulava-guggillu', 'shiro-wat', 'harira']);
+  ADD('pasta', ['pasta-alla-norma']);
+  ADD('risotto', ['risotto-ai-funghi']);
+  ADD('veg-soups', ['ribollita', 'harira']);
+  ADD('antipasti', ['focaccia', 'pan-con-tomate']);
+  ADD('gnocchi', ['gnocchi-alla-romana']);
+  ADD('eggplant-med', ['caponata', 'pasta-alla-norma']);
+  ADD('sichuan', ['yu-xiang-qiezi']);
+  ADD('tapas', ['pimientos-de-padron', 'pan-con-tomate', 'pisto']);
+  ADD('custards', ['flan']);
+  ADD('fruit-pies', ['tarte-tatin', 'apfelstrudel']);
+  ADD('dips', ['muhammara']);
+  ADD('savoury-pies', ['borek']);
+  ADD('eggs', ['kuku-sabzi', 'tamagoyaki']);
+  ADD('corn-breads', ['pupusas']);
+  ADD('mexico-tortilla', ['chilaquiles']);
+  ADD('jollof', ['moros-y-cristianos']);
+  ADD('chocolate', ['brigadeiros']);
+  ADD('peru', ['causa-limena']);
+  ADD('asian-curry', ['thai-red-curry-veg', 'massaman-curry']);
+  ADD('tofu', ['tahu-goreng', 'sundubu-jjigae']);
+  ADD('kimchi-stews', ['sundubu-jjigae']);
+  ADD('ethiopian', ['shiro-wat']);
+  ADD('dumplings', ['pierogi-ruskie']);
+  ADD('pancakes', ['blini']);
+  ADD('veg-stews-med', ['lecso', 'pisto']);
+  ADD('meringue', ['eton-mess']);
+  F('sweet-flatbreads', 'Sweet stuffed flatbreads', ['bobbatlu', 'puran-poli'], [
+    ['Karnataka', 'Holige / obbattu: with chana dal or coconut-jaggery filling.'],
+    ['Gujarat', 'Vedmi: thinner, with toor dal and nutmeg.'],
+    ['Tamil Nadu', 'Poli: often with a coconut filling, sold at sweet shops.'],
+  ]);
+  F('millets', 'Millet staples', ['ragi-mudde', 'ragi-dosa', 'ragi-ambali', 'pitla-bhakri'], [
+    ['Rajasthan', 'Bajra roti with garlic chutney and ghee in winter.'],
+    ['Maharashtra', 'Jowar bhakri: the daily bread of the Deccan plateau.'],
+  ]);
+  F('gourds', 'Gourds & bitter gourd', ['dondakaya-vepudu', 'stuffed-kakarakaya', 'shukto'], [
+    ['Punjab', 'Bharwan karela: bitter gourd stuffed with amchur and fennel.'],
+    ['Tamil Nadu', 'Pavakkai pitlai: bitter gourd in tamarind-coconut gravy.'],
+    ['Gujarat', 'Tindora nu shaak: ivy gourd stir-fry with besan.'],
+  ]);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {

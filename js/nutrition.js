@@ -63,6 +63,7 @@
     [/hung curd|greek yogh?urt|thick (plain |chilled |greek )?yogh?urt|labneh/, 97, 9, 4, 5, 0, 4, 36, { d: 1.05 }],
     [/yogh?urt|\bcurd\b|dahi/, 61, 3.5, 4.7, 3.3, 0, 4.7, 46, { d: 1.04 }],
     [/tzatziki/, 75, 4, 4, 5, 0.3, 3, 300, {}],
+    [/chhena|chenna/, 210, 15, 3, 15, 0, 3, 30, {}],
     [/paneer/, 265, 18.3, 1.2, 20.8, 0, 1.2, 18, {}],
     [/khoya|mawa/, 421, 14.6, 25, 31, 0, 25, 60, {}],
     [/ricotta/, 174, 11, 3, 13, 0, 0.3, 84, {}],
@@ -116,7 +117,7 @@
     [/mirin/, 241, 0.3, 43, 0, 0, 43, 5, { d: 1.1 }],
     [/sake|shaoxing|rice wine/, 134, 0.5, 5, 0, 0, 0, 5, { d: 1.0 }],
     [/\bwine\b|marsala|sherry/, 85, 0.1, 2.6, 0, 0, 0.9, 5, { d: 1.0 }],
-    [/\bbeer\b/, 43, 0.5, 3.6, 0, 0, 0, 4, { d: 1.0 }],
+    [/\bbeer\b|\bale\b|\bstout\b/, 43, 0.5, 3.6, 0, 0, 0, 4, { d: 1.0 }],
     [/\brum\b|kirsch|amaretto|brandy/, 230, 0, 5, 0, 0, 4, 1, { d: 0.95 }],
 
     // ---- sweeteners & chocolate ----
@@ -209,7 +210,7 @@
     [/kidney|rajma|cannellini|pinto|black beans|white beans|refried|hominy|pozole|fava|\bful\b/, 333, 23.6, 60, 0.8, 24.9, 2.2, 12, { cookedAs: [127, 8.7, 22.8, 0.5, 6.4, 0.3, 300], can: 240 }],
     [/vatana|dried white peas|dried peas/, 341, 24.6, 60, 1.2, 25.5, 8, 15, {}],
     [/urad|moong|mung|toor|arhar|masoor|lentil|chana dal|\bdals?\b|\bmoth\b|matki/, 345, 24, 60, 1.5, 15, 2, 15, { d: 0.85 }],
-    [/green peas|frozen peas|\bpeas\b/, 81, 5.4, 14.5, 0.4, 5.7, 5.7, 5, {}],
+    [/green peas|frozen peas|(?<!eyed )\bpeas\b/, 81, 5.4, 14.5, 0.4, 5.7, 5.7, 5, {}],
 
     // ---- nuts & seeds ----
     [/peanuts?|groundnut/, 567, 26, 16, 49, 8.5, 4, 18, { d: 0.6 }],
@@ -227,6 +228,18 @@
     [/basil seeds|sabja|\bchia\b/, 450, 20, 42, 25, 38, 0, 10, { d: 0.65 }],
     [/desiccated|dry coconut|dried coconut/, 660, 6.9, 24, 64.5, 16.3, 7.4, 37, { d: 0.35 }],
     [/coconut/, 354, 3.3, 15, 33.5, 9, 6.2, 20, { d: 0.45 }],
+
+    // extra pantry items
+    [/kokum/, 60, 1, 14, 0.5, 4, 8, 20, { e: 2 }],
+    [/jowar|sorghum|bajra|millet flour/, 349, 10.4, 72.6, 1.9, 6.7, 1.5, 6, { d: 0.5 }],
+    [/meringue/, 393, 5.5, 92, 0.2, 0, 92, 110, { e: 12 }],
+    [/ivy gourd|tindora|tendli|dondakaya|kundru/, 18, 1.2, 3.1, 0.1, 1.6, 1.5, 2, {}],
+    [/gongura|sorrel|colocasia|arbi leaves|taro leaves|chamakura|amaranth|thotakura/, 42, 4, 7, 0.6, 3.5, 0, 10, { b: 200, h: 30, lf: 15 }],
+    [/horse gram|ulava|kulthi|kollu|alasanda|lobia|black-eyed|cowpea/, 336, 22, 57, 0.6, 11, 2, 12, { cookedAs: [116, 7.7, 21, 0.5, 6.5, 1, 4], d: 0.85 }],
+    [/ash gourd|bottle gourd|lauki|snake gourd|ridge gourd|chayote|chow chow|winter melon/, 14, 0.5, 3.2, 0.1, 1.5, 1.5, 2, { e: 400 }],
+    [/bitter gourd|karela/, 17, 1, 3.7, 0.2, 2.8, 0, 5, { e: 100 }],
+    [/dried (apricots?|figs?)|prunes|dried fruits?|barberr/, 241, 3.4, 63, 0.5, 7.3, 53, 10, { d: 0.6 }],
+    [/\bbadi\b|\bbori\b|\bwadi\b/, 345, 24, 60, 1.5, 15, 2, 400, { e: 5 }],
 
     // vegetables whose names would otherwise match meat words
     [/moringa|drumstick pods|murungakkai/, 37, 2.1, 8.5, 0.2, 3.2, 0, 42, { e: 30 }],
@@ -298,6 +311,7 @@
     [/okra|bhindi/, 33, 1.9, 7.5, 0.2, 3.2, 1.5, 7, {}],
     [/green beans|long beans|flat beans|papdi|french beans|flat green/, 31, 1.8, 7, 0.2, 2.7, 3.3, 6, { e: 5 }],
     [/poblano/, 20, 0.9, 4.6, 0.2, 1.7, 2.4, 3, { e: 120 }],
+    [/padr[oó]n|shishito/, 20, 1, 4.6, 0.2, 1.7, 2.4, 3, { e: 8 }],
     [/bell peppers?|capsicum|green peppers?|red peppers?|\bsivri\b/, 26, 1, 6, 0.3, 2, 4.2, 4, { e: 150 }],
     [/large mild green chil/, 40, 2, 9.5, 0.2, 1.5, 5, 7, { e: 20 }],
     [/scotch bonnet|habanero/, 40, 1.9, 8.8, 0.4, 1.5, 5, 9, { e: 8 }],
