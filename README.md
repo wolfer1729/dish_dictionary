@@ -2,12 +2,12 @@
 
 A world recipe app that teaches a complete beginner to cook like a professional, and runs **completely offline** on your PC.
 
-- **787 dishes from 105 countries**: 381 Indian (dhaba, Mughlai, tandoori, South Indian, Indo-Chinese, chaat, ghar ka khana, mithai, from 39 states, cities and regions) and 102 Continental.
-- **587 pure-veg dishes**, plus 113 with egg. There are **no beef or veal dishes**, and a built-in guard rejects any recipe containing them.
+- **833 dishes from 106 countries**: 381 Indian (dhaba, Mughlai, tandoori, South Indian, Indo-Chinese, chaat, ghar ka khana, mithai, from 39 states, cities and regions) and 106 Continental.
+- **623 pure-veg dishes**, plus 123 with egg. There are **no beef or veal dishes**, and a built-in guard rejects any recipe containing them.
 - **Every course**: mains, soups, starters, salads, sides, chutneys and dips, breads, breakfasts, snacks and street food, desserts and drinks.
 - **Nutrition for every dish**: calories, protein, carbs, fat, fibre, sugar and sodium per serving or for the whole recipe, with filters and sorting.
-- **170 dishes with 5 ingredients or less** (salt, pepper, oil and water don't count), plus a set of easy weeknight dinners.
-- **Regional styles**: 129 dish families (dosa, biryani, dal, pancakes, noodles…) link the same dish as cooked in different regions, with notes on other local versions.
+- **189 dishes with 5 ingredients or less** (salt, pepper, oil and water don't count), plus a set of easy weeknight dinners.
+- **Regional styles**: 130 dish families (dosa, biryani, dal, pancakes, noodles…) link the same dish as cooked in different regions, with notes on other local versions.
 - **Reference photos**: freely licensed photos from Wikimedia Commons, stored locally with author and license credit.
 
 No build step and no dependencies: plain HTML, CSS and JavaScript.

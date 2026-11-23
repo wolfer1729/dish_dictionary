@@ -892,6 +892,52 @@
   ADD('rajma', ['bunny-chow']);
   ADD('cape-malay', ['koeksisters', 'bunny-chow']);
 
+  /* ---------------- batch 7 ---------------- */
+  F('japanese-sides', 'Japanese small plates', ['nasu-dengaku', 'hiyayakko', 'goma-ae', 'agedashi-tofu', 'tamagoyaki', 'onigiri'], [
+    ['Japan', 'Kinpira gobo: burdock and carrot stir-fried with soy and sesame.'],
+    ['Japan', 'Sunomono: cucumber and wakame in sweet rice vinegar.'],
+  ]);
+  ADD('tofu', ['hiyayakko', 'dubu-jorim']);
+  ADD('greens', ['goma-ae', 'tumis-kangkung']);
+  ADD('rice-cakes', ['mitarashi-dango', 'jian-dui', 'zongzi', 'biko', 'xoi-xeo', 'yomari']);
+  ADD('pancakes', ['taiyaki', 'socca', 'chatamari']);
+  ADD('frozen', ['kakigori', 'patbingsu']);
+  ADD('custards', ['gyeranjjim', 'galaktoboureko', 'wattalappam']);
+  ADD('kimchi-stews', ['gyeranjjim', 'hobak-jeon', 'dubu-jorim', 'patbingsu']);
+  ADD('batter-fried', ['hobak-jeon']);
+  ADD('noodles', ['dan-dan-noodles', 'liangpi', 'veg-laksa']);
+  ADD('sichuan', ['dan-dan-noodles', 'dry-fried-green-beans']);
+  ADD('veg-soups', ['hot-and-sour-soup', 'pappa-al-pomodoro']);
+  ADD('fried-dough-sweets', ['jian-dui']);
+  ADD('dumplings', ['veg-baozi', 'aushak', 'yomari']);
+  ADD('cookies', ['mooncakes']);
+  ADD('asian-curry', ['veg-laksa', 'sayur-lodeh']);
+  ADD('salads-more', ['rojak']);
+  ADD('mixed-veg', ['sayur-lodeh']);
+  ADD('plantains', ['turon']);
+  ADD('rolls', ['turon']);
+  ADD('halwa', ['ube-halaya']);
+  ADD('tomato-soup', ['pappa-al-pomodoro']);
+  ADD('mushrooms', ['creamy-polenta']);
+  ADD('porridge', ['creamy-polenta']);
+  ADD('gram-flour', ['socca']);
+  ADD('pizza', ['pissaladiere']);
+  ADD('savoury-pies', ['pissaladiere', 'tiropita']);
+  ADD('veg-stews-med', ['briam']);
+  ADD('syrup-pastries', ['galaktoboureko']);
+  ADD('eggs', ['cilbir', 'gyeranjjim']);
+  ADD('jollof', ['maqluba']);
+  ADD('eggplant-med', ['maqluba', 'nasu-dengaku']);
+  ADD('mezze', ['pumpkin-kibbeh']);
+  ADD('chaat', ['chana-chaat-pak']);
+  ADD('chole', ['chana-chaat-pak']);
+  ADD('khichdi', ['bhuna-khichuri']);
+  ADD('dosa', ['hoppers']);
+  ADD('kerala-breakfast', ['hoppers', 'string-hoppers']);
+  ADD('dal', ['parippu']);
+  ADD('potato', ['aloo-tama']);
+  ADD('himalayan', ['aloo-tama', 'chatamari', 'yomari']);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {

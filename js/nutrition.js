@@ -84,6 +84,7 @@
     [/\beggs?\b/, 143, 12.6, 0.7, 9.5, 0, 0.4, 142, { e: 50 }],
 
     // ---- tofu & soy ----
+    [/tofu puffs?|tau pok/, 270, 17, 10, 20, 1, 1, 15, {}],
     [/aburaage|fried tofu/, 386, 23, 0.4, 33, 0.4, 0, 20, { sh: 15 }],
     [/silken|soft tofu/, 55, 4.8, 2.9, 2.7, 0.1, 1.3, 5, {}],
     [/tofu/, 144, 15.8, 2.8, 8.7, 2.3, 0.6, 14, {}],
@@ -116,6 +117,12 @@
     [/edible gum|\bgond\b|gum arabic/, 300, 1, 80, 0, 70, 0, 50, { d: 0.6 }],
     [/cluster beans?|gavar|guar/, 33, 3.2, 10.8, 0.4, 3.2, 1, 10, {}],
     [/pointed gourd|parwal|potol|parval/, 20, 2, 2.2, 0.3, 3, 1, 2, { e: 40 }],
+    [/candlenuts?|macadamias?|kemiri/, 718, 7.9, 14, 76, 8.6, 4.6, 5, { d: 0.55, e: 4.5 }],
+    [/wood ear|black fungus|cloud ear/, 284, 9, 73, 0.7, 70, 0, 35, { d: 0.3 }],
+    [/golden syrup|treacle|corn syrup/, 325, 0, 79, 0, 0, 79, 270, { d: 1.4 }],
+    [/lotus seed paste/, 300, 6, 60, 5, 3, 40, 10, {}],
+    [/sambal/, 70, 1.5, 10, 2, 3, 6, 1500, { d: 1.05 }],
+    [/pizza dough|bread dough/, 250, 8, 48, 3, 2, 1, 500, {}],
     [/green chutney/, 40, 2.5, 7, 0.5, 3, 2, 400, { d: 1.05 }],
     [/tamarind[- ]date chutney|tamarind chutney|sweet chutney|fruit chutney|sweet tamarind/, 200, 1, 50, 0.2, 2, 40, 300, { d: 1.25 }],
     [/tamarind|kudampuli/, 239, 2.8, 62, 0.6, 5, 57, 28, { d: 1.2, e: 3 }],
