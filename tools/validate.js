@@ -1,0 +1,48 @@
+const fs = require('fs'), path = require('path'), vm = require('vm');
+const root = process.argv[2];
+const ls = {}; const ctx = { window: {}, localStorage: { getItem: k => ls[k] || null, setItem: (k, v) => { ls[k] = v; } }, document: { dispatchEvent() {}, getElementById() { return null; } }, CustomEvent: class {}, console };
+ctx.window = ctx; vm.createContext(ctx);
+const files = ['js/core.js', 'js/data/east-asia.js', 'js/data/southeast-asia.js', 'js/data/south-asia.js', 'js/data/middle-east-africa.js', 'js/data/europe.js', 'js/data/americas-oceania.js', 'js/data/india-north.js', 'js/data/india-south-street.js', 'js/data/india-indochinese-sweets.js', 'js/data/india-more.js', 'js/data/world-more-asia-italy.js', 'js/data/world-more-west.js', 'js/data/veg-india-more.js', 'js/data/veg-world.js', 'js/data/courses-soups-starters-sides.js', 'js/data/courses-desserts-drinks.js', 'js/data/continental.js', 'js/data/easy-five-dinners.js', 'js/data/south-india-tiffin-rice.js', 'js/data/south-india-curries-snacks.js', 'js/data/india-regional-more.js', 'js/data/india-telugu-more.js', 'js/data/world-veg-more.js', 'js/data/india-states-more.js', 'js/data/world-more-4.js', 'js/data/india-more-5.js', 'js/data/world-more-5.js', 'js/data/india-more-6.js', 'js/data/world-more-6.js', 'js/data/world-more-7.js', 'js/data/india-more-7.js', 'js/data/world-more-8.js', 'js/data/world-more-9.js', 'js/data/india-more-8.js', 'js/data/india-more-9.js', 'js/data/world-more-10.js', 'js/data/regional.js', 'js/learn-data.js'];
+for (const f of files) vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), ctx, { filename: f });
+const { DD, U } = ctx; const L = DD.L; const errs = [];
+const units = new Set(['', 'g', 'kg', 'ml', 'l', 'tsp', 'tbsp', 'cup', 'clove', 'pinch', 'sprig', 'stalk', 'can', 'bunch', 'handful', 'leaf', 'slice', 'sheet', 'stick', 'piece', 'head', 'fillet', 'knob', 'drop', 'scoop']);
+const techRef = /\[\[([\w-]+)(?:\|[^\]]+)?\]\]/g;
+const checkText = (where, s) => { String(s || '').replace(techRef, (_, id) => { if (!DD.tech[id]) errs.push(`${where}: unknown tech [[${id}]]`); }); if (/\{\{(?!\d+C\}\}|[\d.]+cm\}\})/.test(s || '')) errs.push(`${where}: bad token in "${s}"`); };
+const ids = new Set();
+for (const d of DD.dishes) {
+  const w = d.id;
+  if (ids.has(w)) errs.push('duplicate id ' + w); ids.add(w);
+  for (const k of ['name', 'country', 'flag', 'region', 'emoji', 'course', 'level', 'serves', 'desc', 'story']) if (d[k] == null || d[k] === '') errs.push(`${w}: missing ${k}`);
+  if (!DD.REGIONS[d.region]) errs.push(`${w}: bad region ${d.region}`);
+  if (!L.course[d.course]) errs.push(`${w}: bad course ${d.course}`);
+  d.styles.forEach(t => { if (!L.styles[t]) errs.push(w+': bad style '+t); }); d.tags.forEach(t => { if (!L.tags[t]) errs.push(`${w}: bad tag ${t}`); });
+  d.diet.forEach(t => { if (!L.diet[t]) errs.push(`${w}: bad diet ${t}`); });
+  d.methods.forEach(t => { if (!L.methods[t]) errs.push(`${w}: bad method ${t}`); });
+  Object.keys(d.taste).forEach(t => { if (!L.tastes[t]) errs.push(`${w}: bad taste ${t}`); });
+  d.items.forEach(i => { if (!units.has(i[1])) errs.push(`${w}: unknown unit "${i[1]}" (${i[2]})`); if (i[0] != null && typeof i[0] !== 'number') errs.push(`${w}: qty not number ${i}`); if (typeof i[2] !== 'string') errs.push(`${w}: bad ing ${i}`); });
+  d.ing.forEach(i => { if (!Array.isArray(i) && typeof i !== 'string') errs.push(`${w}: bad ing entry`); });
+  d.steps.forEach((s, n) => { if (!Array.isArray(s) || typeof s[0] !== 'string' || typeof s[1] !== 'string') errs.push(`${w}: bad step ${n}`); if (s[2] != null && typeof s[2] !== 'number') errs.push(`${w}: step ${n} timer not number`); s.forEach(x => typeof x === 'string' && checkText(`${w} step ${n + 1}`, x)); });
+  ['tips', 'mistakes', 'vars'].forEach(k => (d[k] || []).forEach(x => checkText(`${w} ${k}`, x)));
+  checkText(`${w} serve`, d.serve);
+  const isVeg = d.diet.includes('vegetarian'); const meat = /\b(chicken|beef|pork|lamb|bacon|guanciale|pancetta|sausage|fish|prawn|shrimp|tuna|anchov|veal|rabbit|stock cube|fish sauce|shrimp paste|bonito)\b/i;
+  if (isVeg) d.items.forEach(i => { if (meat.test(i[2]) && !/vegetable|optional|or water|or vegan/i.test(i[2] + ' ' + (i[3] || ''))) errs.push(`${w}: vegetarian but has "${i[2]}"`); });
+  if (d.diet.includes('vegan')) d.items.forEach(i => { if (/\b(egg|milk|butter|cream|cheese|yogh?urt|ghee|honey|feta|mayonnaise)\b/i.test(i[2]) && !/coconut|peanut|soy milk|soya milk|oat milk|almond milk|optional|or oil|not vegan|butter beans/i.test(i[2] + ' ' + (i[3] || ''))) errs.push(`${w}: vegan but has "${i[2]}"`); });
+  if (d.diet.includes('dairy-free')) d.items.forEach(i => { if (/\b(milk|butter|cream|cheese|yogh?urt|ghee|feta|parmesan|paneer|mozzarella)\b/i.test(i[2]) && !/coconut|peanut|soy milk|soya milk|oat milk|almond milk|optional|or oil|or neutral|butter beans/i.test(i[2] + ' ' + (i[3] || ''))) errs.push(`${w}: dairy-free but has "${i[2]}"`); });
+  if (d.diet.includes('gluten-free')) d.items.forEach(i => { if (/\b(flour|bread|pasta|spaghetti|noodle|soy sauce|panko|breadcrumbs|bulgur|macaroni|beer|wrappers|tortillas|buns|semolina|rava|sooji|maida|atta|couscous|orzo|pav|baguette|pita|roti|paratha)\b/i.test(i[2]) && !/rice|corn|tapioca|cassava|mandioca|tamari|optional|gluten-free|besan|almond flour|teff|gram flour|maize|makki|butter beans|ragi|urad|dal flour|rice rava|idli rava|chana dal|masala|chickpea flour|jowar|bajra|sorghum|millet/i.test(i[2] + ' ' + (i[3] || ''))) errs.push(`${w}: gluten-free but has "${i[2]}"`); });
+}
+DD.techList.forEach(t => { t.how.forEach(x => checkText('tech ' + t.id, x)); t.tips.forEach(x => checkText('tech ' + t.id, x)); checkText('tech ' + t.id, t.short); });
+DD.lessons.forEach(l => { (l.practice || []).forEach(id => { if (!DD.byId[id]) errs.push(`lesson ${l.id}: missing dish ${id}`); }); (l.tech || []).forEach(id => { if (!DD.tech[id]) errs.push(`lesson ${l.id}: missing tech ${id}`); }); l.body.forEach(b => [].concat(b[1]).forEach(x => checkText('lesson ' + l.id, x))); });
+DD.path.forEach(p => { if (!DD.byId[p.id]) errs.push('path missing ' + p.id); });
+DD.tools.fix.forEach(f => f[2].forEach(x => checkText('fix', x)));
+const used = new Set(DD.dishes.flatMap(d => d.techs)); const unusedTech = DD.techList.filter(t => !used.has(t.id)).map(t => t.id);
+// unit formatting smoke test
+const S = ctx.S; const samples = [[250, 'g'], [1.5, 'tsp'], [0.333, 'cup'], [1200, 'ml'], [3, 'clove'], [0.25, ''], [7.5, 'g']];
+const fm = samples.map(([q, u]) => U.qtyStr(q, u, 1)); S.prefs.units = 'us'; const fu = samples.map(([q, u]) => U.qtyStr(q, u, 1)); S.prefs.units = 'metric';
+console.log('india', DD.dishes.filter(d=>d.country==='India').length, '| veg', DD.dishes.filter(d=>d.vclass==='veg').length, '| egg', DD.dishes.filter(d=>d.vclass==='egg').length, '| nonveg', DD.dishes.filter(d=>d.vclass==='nonveg').length, '| continental', DD.dishes.filter(d=>d.styles.includes('continental')).length, '| dhaba', DD.dishes.filter(d=>d.styles.includes('dhaba')).length, '| areas', [...new Set(DD.dishes.map(d=>d.area).filter(Boolean))].join(', '));
+console.log('dishes', DD.dishes.length, '| countries', new Set(DD.dishes.map(d => d.country)).size, '| regions', new Set(DD.dishes.map(d => d.region)).size, '| techniques', DD.techList.length, '| lessons', DD.lessons.length);
+console.log('per region:', JSON.stringify(Object.fromEntries(Object.keys(DD.REGIONS).map(r => [r, DD.dishes.filter(d => d.region === r).length]))));
+console.log('techniques not used by any dish:', unusedTech.join(', ') || 'none');
+console.log('metric:', fm.join(' | ')); console.log('us    :', fu.join(' | '));
+console.log('rich:', U.rich('Heat to {{180C}}, cut {{2cm}}, then [[sear]] it [[deglaze|deglazing]] **now**'));
+console.log('categories:', ['ground beef', 'black pepper', 'rice vinegar', 'egg noodles', 'garlic', 'coconut milk', 'chicken stock', 'paneer', 'butter'].map(n => n + '→' + U.category(n)).join('; '));
+console.log(errs.length ? 'ERRORS:\n' + errs.join('\n') : 'NO ERRORS');

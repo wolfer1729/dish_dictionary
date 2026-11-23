@@ -1,0 +1,5 @@
+
+# never commit the Wikimedia contact file or test output
+tools/contact.txt
+tools/out/
+tools/audit-dishes5.js

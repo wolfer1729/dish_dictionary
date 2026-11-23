@@ -976,3 +976,22 @@ a, button, label, summary, .chip, .btn { touch-action: manipulation; }
 .reg-notes { margin: 0 0 8px; padding-left: 18px; font-size: .88rem; color: var(--ink-2); }
 .reg-notes li { margin: 3px 0; }
 @media (max-width: 600px) { .reg-links { grid-template-columns: minmax(0, 1fr); } .reg-fam { padding: 12px; } }
+
+/* ---------- installed phone app: keep clear of the status bar, camera notch and gesture bar ----------
+   viewport-fit=cover lets the installed app draw edge to edge, so every bar pads itself by the safe area.
+   On a normal browser tab these values are 0 and nothing changes. */
+:root { --safe-t: env(safe-area-inset-top, 0px); --safe-l: env(safe-area-inset-left, 0px); --safe-r: env(safe-area-inset-right, 0px); --safe-b: env(safe-area-inset-bottom, 0px); --top-h: calc(64px + var(--safe-t)); }
+.topbar { padding-top: var(--safe-t); padding-left: max(20px, var(--safe-l)); padding-right: max(20px, var(--safe-r)); }
+body { padding-left: var(--safe-l); padding-right: var(--safe-r); }
+.tabbar { padding-left: max(6px, var(--safe-l)); padding-right: max(6px, var(--safe-r)); }
+.cook-top { padding-top: calc(12px + var(--safe-t)); padding-left: max(16px, var(--safe-l)); padding-right: max(16px, var(--safe-r)); }
+.cook-drawer { padding-top: calc(20px + var(--safe-t)); padding-bottom: calc(20px + var(--safe-b)); }
+.modal-wrap { padding: calc(16px + var(--safe-t)) 16px calc(16px + var(--safe-b)); }
+.timer-dock { bottom: calc(16px + var(--safe-b)); right: max(16px, var(--safe-r)); }
+.toast { bottom: calc(28px + var(--safe-b)); }
+@media (max-width: 880px) { .topbar { padding-left: max(16px, var(--safe-l)); padding-right: max(16px, var(--safe-r)); } .toast { bottom: calc(84px + var(--safe-b)); } }
+@media (max-width: 880px) {
+  .filters { padding-top: calc(20px + var(--safe-t)); }
+  .timer-dock { bottom: calc(80px + var(--safe-b)); right: max(10px, var(--safe-r)); }
+  body.cooking .timer-dock { bottom: calc(96px + var(--safe-b)); }
+}

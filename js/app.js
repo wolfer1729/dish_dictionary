@@ -205,12 +205,24 @@
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
     navigator.serviceWorker.addEventListener('message', (e) => {
       const m = e.data || {};
-      if (m.type !== 'dd-offline-ready') return;
+      if (m.type !== 'dd-offline-ready' || (!m.fetched && m.saved >= m.total)) return; // stay quiet when nothing new was saved
       toast(m.total && m.saved >= m.total
         ? `📱 Saved on this device: all ${m.total} photos. Works without internet now.`
         : `📱 Saved for offline (${m.saved} of ${m.total} photos). Open again online to finish.`, { href: '#/me', label: 'Details' });
     });
     if (navigator.serviceWorker.startMessages) navigator.serviceWorker.startMessages();
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    // When an update takes over an already-open app, reload once so the new layout and dishes show at once.
+    let ctl = navigator.serviceWorker.controller, reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (ctl && !reloaded) { reloaded = true; location.reload(); } // an older version was running: switch to the new one
+      ctl = navigator.serviceWorker.controller; // first save: nothing to switch from
+    });
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        navigator.serviceWorker.ready.then((r) => r.active && r.active.postMessage({ type: 'dd-save-photos' }));
+        // Installed apps are often resumed instead of reopened: check for a new version whenever the app comes back.
+        document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(() => {}); });
+      }).catch(() => {});
+    });
   }
 })();
