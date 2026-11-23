@@ -2,7 +2,7 @@
    Used only when the app is opened from a web address (e.g. GitHub Pages on a phone).
    On first visit it saves the whole app AND every dish photo on the device, so it keeps working with no internet.
    (Opening index.html straight from disk on a PC does not use this file; that copy is already offline.) */
-const CACHE = 'dd-v22';
+const CACHE = 'dd-v23';
 const SHELL = [
   './', 'index.html', 'css/styles.css', 'manifest.webmanifest',
   'assets/icon.svg', 'assets/icon-192.png', 'assets/icon-512.png', 'assets/icon-maskable-512.png', 'assets/apple-touch-icon.png',
@@ -10,7 +10,7 @@ const SHELL = [
   'js/core.js', 'js/views.js', 'js/learn.js', 'js/mine.js', 'js/cook.js', 'js/app.js', 'js/learn-data.js',
   'js/data/east-asia.js', 'js/data/southeast-asia.js', 'js/data/south-asia.js',
   'js/data/middle-east-africa.js', 'js/data/europe.js', 'js/data/americas-oceania.js',
-  'js/data/india-north.js', 'js/data/india-south-street.js', 'js/data/india-indochinese-sweets.js', 'js/data/india-more.js', 'js/data/world-more-asia-italy.js', 'js/data/world-more-west.js', 'js/data/veg-india-more.js', 'js/data/veg-world.js', 'js/data/courses-soups-starters-sides.js', 'js/data/courses-desserts-drinks.js', 'js/data/continental.js', 'js/data/easy-five-dinners.js', 'js/data/south-india-tiffin-rice.js', 'js/data/south-india-curries-snacks.js', 'js/data/india-regional-more.js', 'js/data/india-telugu-more.js', 'js/data/world-veg-more.js', 'js/data/india-states-more.js', 'js/data/world-more-4.js', 'js/data/india-more-5.js', 'js/data/world-more-5.js', 'js/data/india-more-6.js', 'js/data/world-more-6.js', 'js/data/world-more-7.js', 'js/data/india-more-7.js', 'js/data/world-more-8.js', 'js/data/regional.js', 'js/data/photos.js', 'js/nutrition.js',
+  'js/data/india-north.js', 'js/data/india-south-street.js', 'js/data/india-indochinese-sweets.js', 'js/data/india-more.js', 'js/data/world-more-asia-italy.js', 'js/data/world-more-west.js', 'js/data/veg-india-more.js', 'js/data/veg-world.js', 'js/data/courses-soups-starters-sides.js', 'js/data/courses-desserts-drinks.js', 'js/data/continental.js', 'js/data/easy-five-dinners.js', 'js/data/south-india-tiffin-rice.js', 'js/data/south-india-curries-snacks.js', 'js/data/india-regional-more.js', 'js/data/india-telugu-more.js', 'js/data/world-veg-more.js', 'js/data/india-states-more.js', 'js/data/world-more-4.js', 'js/data/india-more-5.js', 'js/data/world-more-5.js', 'js/data/india-more-6.js', 'js/data/world-more-6.js', 'js/data/world-more-7.js', 'js/data/india-more-7.js', 'js/data/world-more-8.js', 'js/data/world-more-9.js', 'js/data/regional.js', 'js/data/photos.js', 'js/nutrition.js',
 ];
 
 // Save every dish photo. The list is read from the photo index, so new photos are picked up automatically.

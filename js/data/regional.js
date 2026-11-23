@@ -1003,6 +1003,51 @@
   ADD('peru', ['ocopa', 'solterito', 'picarones', 'suspiro-limeno']);
   ADD('meringue', ['suspiro-limeno']);
 
+  /* ---------------- batch 9 ---------------- */
+  F('french-toast', 'Bread puddings & French toast', ['pain-perdu', 'torrijas', 'bread-butter-pudding', 'capirotada', 'om-ali', 'double-ka-meetha', 'shahi-tukda'], [
+    ['Hong Kong', 'Sai do si: deep-fried French toast with peanut butter and condensed milk.'],
+    ['Mumbai', 'Bombay toast: sweet egg-dipped bread fried in ghee.'],
+  ]);
+  ADD('veg-soups', ['acorda', 'ajoblanco', 'okroshka', 'tarator']);
+  ADD('eggs', ['acorda']);
+  ADD('kheer', ['arroz-doce']);
+  ADD('veg-stews-med', ['escalivada', 'spanakorizo', 'taze-fasulye']);
+  ADD('eggplant-med', ['escalivada', 'berenjenas-con-miel']);
+  ADD('tapas', ['berenjenas-con-miel']);
+  ADD('potatoes-europe', ['aligot', 'stoemp', 'boxty', 'lefse']);
+  ADD('cheese-melts', ['aligot', 'gougeres', 'raclette', 'glamorgan-sausages', 'halusky', 'peynirli-pide']);
+  ADD('french-pastry', ['gougeres', 'far-breton']);
+  ADD('custards', ['far-breton', 'ile-flottante', 'somloi-galuska']);
+  ADD('meringue', ['ile-flottante']);
+  ADD('risotto', ['risi-e-bisi', 'suppli']);
+  ADD('pasta', ['pasta-e-ceci']);
+  ADD('bean-stews', ['pasta-e-ceci', 'gigantes']);
+  ADD('gram-flour', ['panelle']);
+  ADD('antipasti', ['panelle', 'suppli']);
+  ADD('stuffed-flatbreads', ['piadina', 'placinte']);
+  ADD('italian-desserts', ['zeppole']);
+  ADD('fried-dough-sweets', ['zeppole', 'kleinur']);
+  ADD('dumplings', ['dampfnudeln', 'germknodel', 'marillenknodel', 'halusky']);
+  ADD('bakery-breads', ['dampfnudeln', 'potica']);
+  ADD('fruit-pies', ['rote-grutze', 'mustikkapiirakka']);
+  ADD('cookies', ['speculoos', 'stroopwafels']);
+  ADD('pancakes', ['crumpets']);
+  ADD('british', ['crumpets', 'bread-butter-pudding', 'glamorgan-sausages']);
+  ADD('potato-cakes', ['boxty', 'deruny']);
+  ADD('sweet-flatbreads', ['lefse']);
+  ADD('salads-more', ['vinegret']);
+  ADD('borscht', ['vinegret']);
+  ADD('cucumber-yogurt', ['okroshka', 'tarator']);
+  ADD('savoury-pies', ['cabbage-pirozhki', 'placinte', 'banitsa']);
+  ADD('porridge', ['grechka']);
+  ADD('mushrooms', ['grechka']);
+  ADD('chocolate', ['somloi-galuska']);
+  ADD('mezze', ['gigantes', 'mucver']);
+  ADD('greens', ['spanakorizo']);
+  ADD('pizza', ['peynirli-pide']);
+  ADD('fritters', ['mucver']);
+  ADD('fruit-nut-sweets', ['asure']);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {
