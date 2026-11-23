@@ -826,6 +826,72 @@
   ADD('peanut-stew', ['matapa']);
   ADD('tagine-couscous', ['thiakry']);
 
+  /* ---------------- batch 6 ---------------- */
+  F('fruit-nut-sweets', 'Date, fruit & nut sweets', ['churchkhela', 'kleicha', 'makroud', 'pinni', 'peanut-chikki', 'til-pitha'], [
+    ['Iran', 'Ranginak: dates stuffed with walnuts under a flour-butter crumble.'],
+    ['Turkey', 'Pestil and köme: dried mulberry or grape leather with nuts.'],
+  ]);
+  ADD('pulao', ['modur-pulao', 'tehri']);
+  ADD('himalayan', ['skyu', 'kinema-curry']);
+  ADD('veg-soups', ['skyu', 'saltibarsciai', 'bissara', 'chamthong']);
+  ADD('breads', ['makki-di-roti', 'koki', 'zunka-bhakri', 'veg-kothu-parotta', 'dholl-puri']);
+  ADD('corn-breads', ['makki-di-roti', 'chipa', 'sopa-paraguaya']);
+  ADD('millets', ['zunka-bhakri', 'bajre-ki-khichdi', 'jhangora-kheer']);
+  ADD('ladoo', ['pinni']);
+  ADD('chole', ['hara-dhania-choliya']);
+  ADD('khichdi', ['bajre-ki-khichdi', 'veg-galho']);
+  ADD('potato', ['nimona']);
+  ADD('fried-dough-sweets', ['imarti', 'balushahi', 'chhena-jhili', 'koeksisters', 'makroud']);
+  ADD('fried-breads', ['baursak']);
+  ADD('milk-sweets', ['rabri', 'bal-mithai', 'chhena-jhili']);
+  ADD('peda-mithai', ['bal-mithai', 'balushahi', 'imarti']);
+  ADD('kheer', ['jhangora-kheer', 'palada-payasam', 'paal-kozhukattai']);
+  ADD('bean-stews', ['bhatt-ki-churkani', 'avarekalu-saaru', 'baleadas', 'gallo-pinto', 'porotos-granados', 'waakye', 'githeri', 'bunny-chow']);
+  ADD('baked-dough', ['dal-bafla']);
+  ADD('yogurt-curry', ['sindhi-kadhi', 'majjige-huli']);
+  ADD('gram-flour', ['sindhi-kadhi', 'zunka-bhakri', 'shan-tofu']);
+  ADD('chaat', ['sev-usal']);
+  ADD('festive-snacks', ['chakli', 'sakinalu']);
+  ADD('custards', ['double-ka-meetha', 'haupia']);
+  ADD('hyderabadi', ['double-ka-meetha']);
+  ADD('fritters', ['goli-baje', 'akara']);
+  ADD('batter-fried', ['akara']);
+  ADD('rice-cakes', ['paal-kozhukattai', 'til-pitha', 'pumaloi', 'patoleo', 'fara']);
+  ADD('steamed-cakes', ['patoleo', 'fara', 'pumaloi']);
+  ADD('dal', ['paruppu-urundai-kuzhambu']);
+  ADD('fried-rice', ['veg-kothu-parotta', 'gallo-pinto']);
+  ADD('goan', ['patoleo']);
+  ADD('mixed-veg', ['santula', 'chamthong']);
+  ADD('paneer', ['chhanar-dalna', 'potoler-dorma']);
+  ADD('stuffed-veg', ['potoler-dorma']);
+  ADD('gourds', ['potoler-dorma', 'majjige-huli']);
+  ADD('pancakes', ['kilanji', 'aebleskiver', 'poffertjes']);
+  ADD('tofu', ['shan-tofu', 'kinema-curry']);
+  ADD('dips', ['pkhali']);
+  ADD('greens', ['pkhali', 'zhingyalov-hats', 'qutab', 'mukimo']);
+  ADD('stuffed-flatbreads', ['zhingyalov-hats', 'qutab', 'dholl-puri']);
+  ADD('cucumber-yogurt', ['qurutob']);
+  ADD('salads-more', ['qurutob', 'tam-mak-hoong']);
+  ADD('noodles', ['ashlan-fu']);
+  ADD('mezze', ['fatteh', 'bissara']);
+  ADD('syrup-pastries', ['bint-al-sahn']);
+  ADD('cookies', ['kleicha', 'nanaimo-bars']);
+  ADD('savoury-pies', ['pastizzi', 'pita-krompirusa', 'gibanica', 'karelian-pies', 'brik']);
+  ADD('potatoes-europe', ['pita-krompirusa']);
+  ADD('cheese-melts', ['gibanica', 'strukli', 'smazeny-syr', 'welsh-rarebit', 'tequenos', 'provoleta']);
+  ADD('cutlets', ['smazeny-syr']);
+  ADD('borscht', ['saltibarsciai']);
+  ADD('bakery-breads', ['karelian-pies', 'chipa', 'damper', 'panipopo']);
+  ADD('british', ['welsh-rarebit', 'cranachan']);
+  ADD('chocolate', ['nanaimo-bars']);
+  ADD('plantains', ['mangu', 'matoke', 'attieke']);
+  ADD('mexico-tortilla', ['baleadas', 'tlayudas']);
+  ADD('jollof', ['waakye']);
+  ADD('eggs', ['chipsi-mayai', 'brik']);
+  ADD('tagine-couscous', ['attieke']);
+  ADD('rajma', ['bunny-chow']);
+  ADD('cape-malay', ['koeksisters', 'bunny-chow']);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {
