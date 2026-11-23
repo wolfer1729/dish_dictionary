@@ -1080,6 +1080,39 @@
   ADD('gourds', ['lauki-kofta', 'lauki-halwa']);
   ADD('pulao', ['matar-pulao']);
 
+  /* ---------------- batch 11 ---------------- */
+  F('toffee', 'Toffee, brittle & candy', ['hokey-pokey', 'peanut-chikki', 'brigadeiros', 'bal-mithai'], [
+    ['Scotland', 'Tablet: crumbly sugar-butter-condensed-milk fudge.'],
+    ['Mexico', 'Cajeta candies and alegría (amaranth-honey bars).'],
+  ]);
+  ADD('indo-chinese', ['veg-manchurian','schezwan-fried-rice','triple-schezwan-rice','american-chopsuey','chilli-mushroom','chilli-garlic-noodles','paneer-65','baby-corn-manchurian','dragon-potato','veg-lollipop','chilli-soya-chunks','hot-garlic-veg','schezwan-chutney','chinese-bhel','lemon-coriander-soup']);
+  ADD('fried-rice', ['schezwan-fried-rice', 'triple-schezwan-rice']);
+  ADD('noodles', ['american-chopsuey', 'chilli-garlic-noodles']);
+  ADD('paneer', ['paneer-65']);
+  ADD('chutney', ['schezwan-chutney', 'pikliz']);
+  ADD('chaat', ['chinese-bhel']);
+  ADD('veg-soups', ['lemon-coriander-soup']);
+  ADD('samosa', ['aloo-pie']);
+  ADD('fritters', ['pholourie']);
+  ADD('stuffed-flatbreads', ['dhalpuri-roti']);
+  ADD('chole', ['dhalpuri-roti']);
+  ADD('fried-dough-sweets', ['trini-kurma', 'malasadas', 'firi-firi']);
+  ADD('bakery-breads', ['coconut-bake', 'johnnycake', 'fairy-bread', 'pumpkin-scones', 'rewena-bread']);
+  ADD('fruit-pies', ['gizzada']);
+  ADD('cassava', ['bammy', 'vakalavalava']);
+  ADD('bean-stews', ['ital-stew']);
+  ADD('custards', ['sweet-potato-pudding', 'habichuelas-con-dulce', 'tembleque', 'boniatillo']);
+  ADD('porridge', ['funchi', 'cou-cou']);
+  ADD('corn-breads', ['funchi']);
+  ADD('okra', ['cou-cou']);
+  ADD('dips', ['avocado-smash']);
+  ADD('pancakes', ['pikelets']);
+  ADD('cookies', ['afghan-biscuits', 'louise-slice']);
+  ADD('meringue', ['louise-slice']);
+  ADD('cheese-melts', ['cheese-rolls']);
+  ADD('greens', ['palusami', 'rourou']);
+  ADD('rice-cakes', ['butter-mochi']);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {

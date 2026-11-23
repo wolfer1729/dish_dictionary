@@ -298,7 +298,7 @@
     steps: [['Rub', 'Rub butter into flour and salt.'], ['Mix', 'Add milk; mix to a soft dough; shape a round and score a cross.'], ['Bake', 'Bake at {{200C}} 30 minutes until hollow-sounding.', 30]],
     tips: ['Don’t overwork.'], mistakes: ['Heavy damper: too much kneading.'], vars: ['Add wattleseed or cheese.'], serve: 'Butter and golden syrup.' });
 
-  X(C('United States', '🇺🇸', 'Oceania', { area: 'Hawaii' }), { id: 'haupia', name: 'Haupia', local: 'Haupia', emoji: '🥥', course: 'dessert', level: 1, prep: 5, cook: 10, rest: 120, serves: 9,
+  X(C('Hawaiʻi (USA)', '🌺', 'Oceania'), { id: 'haupia', name: 'Haupia', local: 'Haupia', emoji: '🥥', course: 'dessert', level: 1, prep: 5, cook: 10, rest: 120, serves: 9,
     taste: { sweet: 3, rich: 4 }, diet: ['vegan', 'gluten-free'], methods: ['simmer'], tags: ['party', 'make-ahead', 'summer'],
     desc: 'Hawaiian coconut milk pudding set firm and cut into squares.',
     story: 'Served at every lūʻau; once thickened with arrowroot (pia).',
