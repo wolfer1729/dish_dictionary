@@ -938,6 +938,71 @@
   ADD('potato', ['aloo-tama']);
   ADD('himalayan', ['aloo-tama', 'chatamari', 'yomari']);
 
+  /* ---------------- batch 8 ---------------- */
+  F('cassava', 'Cassava & yuca', ['yuca-con-mojo', 'farofa', 'tapioca-crepe', 'attieke', 'chipa', 'pao-de-queijo'], [
+    ['Ghana', 'Fufu: boiled cassava and plantain pounded into a smooth, stretchy dough.'],
+    ['Kerala', 'Kappa puzhukku: mashed tapioca with coconut and green chili.'],
+    ['Indonesia', 'Getuk: steamed sweet cassava cakes with coconut.'],
+  ]);
+  ADD('fruit-nut-sweets', ['shufta']);
+  ADD('ladoo', ['panjiri', 'mohanthal']);
+  ADD('pulao', ['meethe-chawal', 'masale-bhat']);
+  ADD('samosa', ['pyaaz-kachori', 'mawa-kachori', 'hing-kochuri']);
+  ADD('milk-sweets', ['mawa-kachori', 'mawa-bati', 'pantua', 'chomchom', 'rasabali']);
+  ADD('breads', ['bajre-ki-roti', 'sheermal', 'khakhra']);
+  ADD('millets', ['bajre-ki-roti']);
+  ADD('yogurt-curry', ['papad-ki-sabzi', 'majjiga-pulusu']);
+  ADD('potato', ['aloo-rasedar']);
+  ADD('bakery-breads', ['sheermal', 'bannock']);
+  ADD('fried-dough-sweets', ['mawa-bati', 'neyyappam', 'pantua', 'khaja', 'chin-chin', 'sfenj', 'picarones']);
+  ADD('gram-flour', ['fafda', 'mohanthal', 'pithla']);
+  ADD('festive-snacks', ['fafda', 'khakhra', 'achappam', 'sundal']);
+  ADD('brinjal', ['ringan-no-olo']);
+  ADD('variety-rice', ['masale-bhat', 'menthya-bath']);
+  ADD('fried-breads', ['aamras-puri', 'hing-kochuri', 'vetkoek', 'jamaican-festival', 'bannock']);
+  ADD('goan', ['mushroom-xacuti', 'sannas']);
+  ADD('mushrooms', ['mushroom-xacuti', 'diri-djon-djon']);
+  ADD('steamed-cakes', ['sannas']);
+  ADD('rice-cakes', ['sannas', 'dal-pitha', 'mofo-gasy']);
+  ADD('salads-more', ['kosambari', 'taktouka', 'mechouia', 'solterito']);
+  ADD('chopped-salad', ['kosambari']);
+  ADD('relish-curries', ['ulli-theeyal', 'vatha-kuzhambu']);
+  ADD('chole', ['sundal']);
+  ADD('sweet-flatbreads', ['pootharekulu']);
+  ADD('mixed-veg', ['labra']);
+  ADD('chaat', ['jhal-muri', 'dahi-bara-aloo-dum']);
+  ADD('fritters', ['dahi-bara-aloo-dum', 'taameya', 'hush-puppies', 'bunuelos']);
+  ADD('dumplings', ['dal-pitha']);
+  ADD('chutney', ['pehak']);
+  ADD('himalayan', ['pehak']);
+  ADD('tofu', ['yassa-tofu']);
+  ADD('peanut-stew', ['ndole', 'sadza-muriwo', 'sopa-de-mani']);
+  ADD('greens', ['ndole', 'efo-riro', 'molokhia', 'callaloo']);
+  ADD('coolers', ['zobo']);
+  ADD('plantains', ['tatale', 'rellenitos']);
+  ADD('pancakes', ['tatale', 'kisra', 'mofo-gasy', 'tapioca-crepe']);
+  ADD('ethiopian', ['atkilt-wat', 'kik-alicha', 'kisra']);
+  ADD('dal', ['kik-alicha']);
+  ADD('mezze', ['taameya']);
+  ADD('stuffed-veg', ['mahshi', 'chiles-rellenos']);
+  ADD('custards', ['om-ali', 'melktert', 'capirotada', 'quindim', 'suspiro-limeno']);
+  ADD('veg-soups', ['molokhia', 'corn-chowder', 'locro', 'sopa-de-mani']);
+  ADD('tagine-couscous', ['bazeen', 'seffa']);
+  ADD('dips', ['taktouka', 'mechouia']);
+  ADD('porridge', ['sadza-muriwo', 'cheese-grits']);
+  ADD('bean-stews', ['succotash', 'red-beans-rice', 'enfrijoladas', 'arroz-con-gandules', 'locro']);
+  ADD('cheese-melts', ['cheese-grits', 'api-con-pastel', 'bunuelos']);
+  ADD('fruit-pies', ['pecan-pie', 'key-lime-pie']);
+  ADD('rajma', ['red-beans-rice']);
+  ADD('corn-breads', ['hush-puppies', 'jamaican-festival']);
+  ADD('mexico-tortilla', ['sopes', 'chiles-rellenos', 'enfrijoladas']);
+  ADD('chocolate', ['champurrado']);
+  ADD('kheer', ['arroz-con-leche']);
+  ADD('jollof', ['arroz-con-gandules', 'diri-djon-djon']);
+  ADD('cookies', ['bolo-de-cenoura']);
+  ADD('peru', ['ocopa', 'solterito', 'picarones', 'suspiro-limeno']);
+  ADD('meringue', ['suspiro-limeno']);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {

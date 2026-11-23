@@ -252,7 +252,7 @@
   });
 
   /* ---------- tag existing Western dishes as continental ---------- */
-  DD.addStyle('continental', ['carbonara', 'margherita-pizza', 'risotto-milanese', 'tiramisu', 'french-omelette', 'beef-bourguignon', 'crepes', 'ratatouille',
-    'tortilla-espanola', 'gazpacho', 'greek-salad', 'fish-and-chips', 'wiener-schnitzel', 'mac-and-cheese', 'pancakes', 'chocolate-chip-cookies', 'smash-burger',
-    'chimichurri-steak', 'paella', 'goulash', 'borscht', 'pavlova']);
+  DD.addStyle('continental', ['carbonara', 'margherita-pizza', 'risotto-milanese', 'tiramisu', 'french-omelette', 'crepes', 'ratatouille',
+    'tortilla-espanola', 'gazpacho', 'greek-salad', 'fish-and-chips', 'wiener-schnitzel', 'mac-and-cheese', 'pancakes', 'chocolate-chip-cookies',
+    'paella', 'borscht', 'pavlova']);
 })();
