@@ -1048,6 +1048,38 @@
   ADD('fritters', ['mucver']);
   ADD('fruit-nut-sweets', ['asure']);
 
+  /* ---------------- batch 10 ---------------- */
+  ADD('chole', ['chole-kulche', 'kala-chana-curry']);
+  ADD('chaat', ['chole-kulche']);
+  ADD('paneer', ['paneer-lababdar', 'paneer-pasanda', 'paneer-do-pyaza', 'achari-paneer', 'paneer-pakora']);
+  ADD('korma', ['paneer-pasanda']);
+  ADD('greens', ['methi-malai-matar']);
+  ADD('mixed-veg', ['mix-veg-curry']);
+  ADD('rajma', ['lobia-curry']);
+  ADD('bean-stews', ['lobia-curry']);
+  ADD('dal', ['masoor-dal']);
+  ADD('lentils-world', ['masoor-dal']);
+  ADD('biryani', ['kathal-biryani']);
+  ADD('veg-kebabs', ['tandoori-aloo', 'tandoori-gobi', 'achari-paneer']);
+  ADD('potato', ['tandoori-aloo']);
+  ADD('fritters', ['bread-pakora', 'paneer-pakora', 'aloo-bonda']);
+  ADD('mumbai-street', ['aloo-bonda']);
+  ADD('porridge', ['veg-dalia']);
+  ADD('upma', ['veg-dalia']);
+  ADD('gram-flour', ['moong-dal-chilla', 'missi-roti', 'soan-papdi']);
+  ADD('pancakes', ['moong-dal-chilla']);
+  ADD('breads', ['gobi-paratha', 'mooli-paratha', 'lachha-paratha', 'missi-roti', 'tandoori-roti', 'garlic-naan', 'rumali-roti']);
+  ADD('stuffed-flatbreads', ['gobi-paratha', 'mooli-paratha']);
+  ADD('cucumber-yogurt', ['boondi-raita']);
+  ADD('coolers', ['badam-milk', 'rose-milk']);
+  ADD('milk-sweets', ['rasmalai', 'kalakand']);
+  ADD('halwa', ['lauki-halwa']);
+  ADD('kheer', ['sheer-khurma']);
+  ADD('hyderabadi', ['sheer-khurma']);
+  ADD('ladoo', ['soan-papdi', 'coconut-barfi']);
+  ADD('gourds', ['lauki-kofta', 'lauki-halwa']);
+  ADD('pulao', ['matar-pulao']);
+
   /* ---------------- index ---------------- */
   DD.familyOf = {};
   for (const f of DD.FAMILIES) {

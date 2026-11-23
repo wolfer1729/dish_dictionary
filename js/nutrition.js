@@ -140,6 +140,7 @@
     [/kefir/, 52, 3.4, 4.5, 2, 0, 4.5, 40, { d: 1.03 }],
     [/buckwheat|\bkasha\b/, 343, 13, 72, 3.4, 10, 0, 1, { d: 0.75 }],
     [/custard(?! powder)|cr[eè]me anglaise/, 122, 3.5, 17, 4.5, 0, 15, 60, { d: 1.05 }],
+    [/kulchas?/, 290, 8.5, 50, 6, 2, 3, 450, { e: 80 }],
     [/green chutney/, 40, 2.5, 7, 0.5, 3, 2, 400, { d: 1.05 }],
     [/tamarind[- ]date chutney|tamarind chutney|sweet chutney|fruit chutney|sweet tamarind/, 200, 1, 50, 0.2, 2, 40, 300, { d: 1.25 }],
     [/tamarind|kudampuli/, 239, 2.8, 62, 0.6, 5, 57, 28, { d: 1.2, e: 3 }],
